@@ -7,18 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE9FECE52A6156B000BF256A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FECE42A6156B000BF256A /* MapViewModel.swift */; };
 		DEE253002A6138EA00A54602 /* EmergencyResponseMRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE252FF2A6138EA00A54602 /* EmergencyResponseMRTApp.swift */; };
 		DEE253022A6138EA00A54602 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE253012A6138EA00A54602 /* ContentView.swift */; };
 		DEE253042A6138EB00A54602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE253032A6138EB00A54602 /* Assets.xcassets */; };
 		DEE253072A6138EB00A54602 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE253062A6138EB00A54602 /* Preview Assets.xcassets */; };
+		DEE253142A613AE500A54602 /* AdminHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE253132A613AE500A54602 /* AdminHomeView.swift */; };
+		DEE253162A613AF100A54602 /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE253152A613AF100A54602 /* UserHomeView.swift */; };
+		DEE2531C2A613B9200A54602 /* UserHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE2531B2A613B9200A54602 /* UserHomeViewModel.swift */; };
+		DEE2531F2A613BAB00A54602 /* AdminHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE2531E2A613BAB00A54602 /* AdminHomeViewModel.swift */; };
+		DEE253212A613BB500A54602 /* CupertinoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE253202A613BB500A54602 /* CupertinoButton.swift */; };
+		DEE253232A613EEE00A54602 /* ReportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE253222A613EEE00A54602 /* ReportButton.swift */; };
+		DEE253262A613F9B00A54602 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE253252A613F9B00A54602 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE9FECE12A6155AB00BF256A /* The Breeze.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Breeze.gpx"; sourceTree = "<group>"; };
+		DE9FECE42A6156B000BF256A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		DE9FECE62A615BC100BF256A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DEE252FC2A6138EA00A54602 /* EmergencyResponseMRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmergencyResponseMRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE252FF2A6138EA00A54602 /* EmergencyResponseMRTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyResponseMRTApp.swift; sourceTree = "<group>"; };
 		DEE253012A6138EA00A54602 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DEE253032A6138EB00A54602 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEE253062A6138EB00A54602 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DEE253132A613AE500A54602 /* AdminHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeView.swift; sourceTree = "<group>"; };
+		DEE253152A613AF100A54602 /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
+		DEE2531B2A613B9200A54602 /* UserHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewModel.swift; sourceTree = "<group>"; };
+		DEE2531E2A613BAB00A54602 /* AdminHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeViewModel.swift; sourceTree = "<group>"; };
+		DEE253202A613BB500A54602 /* CupertinoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupertinoButton.swift; sourceTree = "<group>"; };
+		DEE253222A613EEE00A54602 /* ReportButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportButton.swift; sourceTree = "<group>"; };
+		DEE253252A613F9B00A54602 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +69,13 @@
 		DEE252FE2A6138EA00A54602 /* EmergencyResponseMRT */ = {
 			isa = PBXGroup;
 			children = (
+				DE9FECE62A615BC100BF256A /* Info.plist */,
+				DEE2531A2A613B2B00A54602 /* ViewModels */,
+				DEE253172A613B1300A54602 /* Components */,
+				DEE2530F2A613AA100A54602 /* Views */,
 				DEE252FF2A6138EA00A54602 /* EmergencyResponseMRTApp.swift */,
 				DEE253012A6138EA00A54602 /* ContentView.swift */,
+				DE9FECE12A6155AB00BF256A /* The Breeze.gpx */,
 				DEE253032A6138EB00A54602 /* Assets.xcassets */,
 				DEE253052A6138EB00A54602 /* Preview Content */,
 			);
@@ -65,6 +88,59 @@
 				DEE253062A6138EB00A54602 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DEE2530F2A613AA100A54602 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DEE253242A613F9100A54602 /* Map */,
+				DEE253102A613AC800A54602 /* Home */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DEE253102A613AC800A54602 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DEE253132A613AE500A54602 /* AdminHomeView.swift */,
+				DEE253152A613AF100A54602 /* UserHomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DEE253172A613B1300A54602 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DEE253202A613BB500A54602 /* CupertinoButton.swift */,
+				DEE253222A613EEE00A54602 /* ReportButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DEE2531A2A613B2B00A54602 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2531D2A613B9A00A54602 /* Home */,
+				DE9FECE42A6156B000BF256A /* MapViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DEE2531D2A613B9A00A54602 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2531B2A613B9200A54602 /* UserHomeViewModel.swift */,
+				DEE2531E2A613BAB00A54602 /* AdminHomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DEE253242A613F9100A54602 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DEE253252A613F9B00A54602 /* MapView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +213,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE253162A613AF100A54602 /* UserHomeView.swift in Sources */,
+				DE9FECE52A6156B000BF256A /* MapViewModel.swift in Sources */,
+				DEE253212A613BB500A54602 /* CupertinoButton.swift in Sources */,
 				DEE253022A6138EA00A54602 /* ContentView.swift in Sources */,
 				DEE253002A6138EA00A54602 /* EmergencyResponseMRTApp.swift in Sources */,
+				DEE2531F2A613BAB00A54602 /* AdminHomeViewModel.swift in Sources */,
+				DEE253232A613EEE00A54602 /* ReportButton.swift in Sources */,
+				DEE253142A613AE500A54602 /* AdminHomeView.swift in Sources */,
+				DEE253262A613F9B00A54602 /* MapView.swift in Sources */,
+				DEE2531C2A613B9200A54602 /* UserHomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +354,10 @@
 				DEVELOPMENT_TEAM = KYR4X9M655;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmergencyResponseMRT/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +387,10 @@
 				DEVELOPMENT_TEAM = KYR4X9M655;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmergencyResponseMRT/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
