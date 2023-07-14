@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isAdmin: Bool = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            Group {
+                if (isAdmin) {
+                    AdminHomeView()
+                } else {
+                    UserHomeView()
+                }
+            }
         }
-        .padding()
     }
 }
 
