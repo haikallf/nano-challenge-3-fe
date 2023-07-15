@@ -20,6 +20,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var region = MKCoordinateRegion(center: MapConstants.startingLocation, span: MapConstants.defaultSpan)
     @Published var userLocation: CLLocationCoordinate2D? = nil
     @Published var shouldResetToCenter: Bool = false
+    @Published var otherUsers: [User] = User.all
 
     func checkIfLocationServicesIsEnabled() {
         guard CLLocationManager.authorizationStatus() != .denied else {
@@ -89,4 +90,22 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         userLocation = location.coordinate
         updateRegion(location.coordinate)
     }
+    
+    func colorForString(_ string: String) -> Color {
+        switch string {
+        case "red":
+            return Color.red
+        case "green":
+            return Color.green
+        case "blue":
+            return Color.blue
+        case "yellow":
+            return Color.yellow
+        case "orange":
+            return Color.orange
+        default:
+            return Color.black
+        }
+    }
+
 }
