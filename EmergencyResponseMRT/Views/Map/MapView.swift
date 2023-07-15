@@ -14,12 +14,19 @@ struct MapView: View {
     
     
     var body: some View {
-        Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
-            .ignoresSafeArea()
-//            .accentColor(.red)
-            .onAppear {
-                viewModel.checkIfLocationServicesIsEnabled()
+        ZStack {
+            Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
+                .ignoresSafeArea()
+                .onAppear {
+                    viewModel.checkIfLocationServicesIsEnabled()
+                    viewModel.startUpdatingUserLocation()
+                }
+            
+            VStack {
+                Spacer()
+                CupertinoButton("Re-Center", action: {})
             }
+        }
     }
 }
 
