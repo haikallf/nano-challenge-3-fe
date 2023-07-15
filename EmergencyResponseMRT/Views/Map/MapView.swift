@@ -11,11 +11,14 @@ import MapKit
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
     
-    
-    
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
+            Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.otherUsers) { userLocation in
+                MapAnnotation(coordinate: userLocation.coordinate) {
+                    Image(systemName: "person.fill")
+                        .foregroundColor(viewModel.colorForString(userLocation.pinType))
+                }
+            }
                 .ignoresSafeArea()
                 .gesture(DragGesture().onChanged { _ in
                     viewModel.shouldResetToCenter = false

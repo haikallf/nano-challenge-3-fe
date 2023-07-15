@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5C533EE2A62F436003EE909 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C533ED2A62F436003EE909 /* User.swift */; };
 		DE9FECE52A6156B000BF256A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FECE42A6156B000BF256A /* MapViewModel.swift */; };
 		DEE253002A6138EA00A54602 /* EmergencyResponseMRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE252FF2A6138EA00A54602 /* EmergencyResponseMRTApp.swift */; };
 		DEE253022A6138EA00A54602 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE253012A6138EA00A54602 /* ContentView.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C5C533ED2A62F436003EE909 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE9FECE12A6155AB00BF256A /* The Breeze.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Breeze.gpx"; sourceTree = "<group>"; };
 		DE9FECE42A6156B000BF256A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		DE9FECE62A615BC100BF256A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C5C533EC2A62F42C003EE909 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C5C533ED2A62F436003EE909 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DEE252F32A6138EA00A54602 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +79,7 @@
 		DEE252FE2A6138EA00A54602 /* EmergencyResponseMRT */ = {
 			isa = PBXGroup;
 			children = (
+				C5C533EC2A62F42C003EE909 /* Models */,
 				DE9FECE62A615BC100BF256A /* Info.plist */,
 				DEE2531A2A613B2B00A54602 /* ViewModels */,
 				DEE253172A613B1300A54602 /* Components */,
@@ -223,6 +234,7 @@
 				DEE253142A613AE500A54602 /* AdminHomeView.swift in Sources */,
 				DEE253262A613F9B00A54602 /* MapView.swift in Sources */,
 				DEE2531C2A613B9200A54602 /* UserHomeViewModel.swift in Sources */,
+				C5C533EE2A62F436003EE909 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
