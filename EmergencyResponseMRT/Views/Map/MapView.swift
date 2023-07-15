@@ -25,13 +25,15 @@ struct MapView: View {
                     viewModel.startUpdatingUserLocation()
                 }
             
-            VStack {
-                Spacer()
-                CupertinoButton("Re-Center", action: {
-                    viewModel.resetMapToCenter()
-                })
+            if (!viewModel.shouldResetToCenter) {
+                VStack {
+                    Spacer()
+                    CupertinoButton("Re-Center", action: {
+                        viewModel.resetMapToCenter()
+                    })
+                }
+                .padding(.horizontal, 120)
             }
-            .padding(.horizontal, 120)
         }
     }
 }
