@@ -17,6 +17,9 @@ struct MapView: View {
         ZStack {
             Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
                 .ignoresSafeArea()
+                .gesture(DragGesture().onChanged { _ in
+                    viewModel.shouldResetToCenter = false
+                })
                 .onAppear {
                     viewModel.checkIfLocationServicesIsEnabled()
                     viewModel.startUpdatingUserLocation()
@@ -24,8 +27,11 @@ struct MapView: View {
             
             VStack {
                 Spacer()
-                CupertinoButton("Re-Center", action: {})
+                CupertinoButton("Re-Center", action: {
+                    viewModel.resetMapToCenter()
+                })
             }
+            .padding(.horizontal, 120)
         }
     }
 }
