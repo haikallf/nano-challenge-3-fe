@@ -7,28 +7,6 @@
 
 import SwiftUI
 
-//struct CupertinoButton: View {
-//    var body: some View {
-//        Button(action: {
-//
-//        }, label: {
-//            Text("Halo")
-//                .padding(.vertical, 12)
-//                .padding(.horizontal)
-//                .frame(maxWidth: .infinity)
-//                .background(.blue)
-//                .foregroundColor(.white)
-//                .cornerRadius(8)
-//        })
-//    }
-//}
-//
-//struct CupertinoButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CupertinoButton()
-//    }
-//}
-
 struct CupertinoButton: View {
     let text: String
     let onTap: () -> Void

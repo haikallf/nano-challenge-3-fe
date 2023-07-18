@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AdminHomeView: View {
     var body: some View {
-        Text("Admin Home View")
+        MapView()
     }
 }
 

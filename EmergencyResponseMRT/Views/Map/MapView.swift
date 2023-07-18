@@ -10,6 +10,7 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
+    @State private var isSheetShown: Bool = false
     
     var body: some View {
         ZStack {
@@ -17,16 +18,19 @@ struct MapView: View {
                 MapAnnotation(coordinate: userLocation.coordinate) {
                     Image(systemName: "person.fill")
                         .foregroundColor(viewModel.colorForString(userLocation.pinType))
+                        .onTapGesture {
+                            isSheetShown = true
+                        }
                 }
             }
-                .ignoresSafeArea()
-                .gesture(DragGesture().onChanged { _ in
-                    viewModel.shouldResetToCenter = false
-                })
-                .onAppear {
-                    viewModel.checkIfLocationServicesIsEnabled()
-                    viewModel.startUpdatingUserLocation()
-                }
+            .ignoresSafeArea()
+            .gesture(DragGesture().onChanged { _ in
+                viewModel.shouldResetToCenter = false
+            })
+            .onAppear {
+                viewModel.checkIfLocationServicesIsEnabled()
+                viewModel.startUpdatingUserLocation()
+            }
             
             if (!viewModel.shouldResetToCenter) {
                 VStack {
@@ -38,6 +42,12 @@ struct MapView: View {
                 .padding(.horizontal, 120)
             }
         }
+        .sheet(isPresented: $isSheetShown, content: {
+            VStack {
+                Text("This is sheet")
+            }
+            .presentationDetents([.medium])
+        })
     }
 }
 

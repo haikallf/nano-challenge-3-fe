@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct UserHomeView: View {
+    @StateObject var notificationService = NotificationService()
+    
     var body: some View {
         ZStack {
             VStack {
@@ -24,11 +26,11 @@ struct UserHomeView: View {
             }
             .padding()
             
-            ReportButton()
-//                .frame(width: .infinity, height: .infinity)
-                
-//                .ignoresSafeArea()
+            ReportButton(action: {
+                notificationService.sendNotification(title: "This is title", body: "This is body")
+            })
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
@@ -37,3 +39,5 @@ struct UserHomeView_Previews: PreviewProvider {
         UserHomeView()
     }
 }
+
+
