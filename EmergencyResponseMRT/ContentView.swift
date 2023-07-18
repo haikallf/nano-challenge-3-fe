@@ -16,10 +16,13 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            if (userDefaults.object(forKey: isAdminKey) != nil) {
-                TransitionView()
-            } else {
-                LoginView()
+            VStack {
+                if (userDefaults.object(forKey: isAdminKey) != nil) {
+                    TransitionView()
+                } else {
+                    LoginView()
+                }
+                Text("Hello World")
             }
         }
         .onAppear {
