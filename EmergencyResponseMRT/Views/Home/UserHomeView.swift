@@ -30,6 +30,9 @@ struct UserHomeView: View {
                 notificationService.sendNotification(title: "This is title", body: "This is body")
             })
         }
+        .onAppear {
+            UserDefaults.standard.set(false, forKey: "isAdmin")
+        }
         .navigationBarBackButtonHidden()
     }
 }

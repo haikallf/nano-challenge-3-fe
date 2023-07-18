@@ -9,7 +9,12 @@ import SwiftUI
 
 struct AdminHomeView: View {
     var body: some View {
-        MapView()
+        VStack {
+            
+        }
+        .onAppear {
+            UserDefaults.standard.set(true, forKey: "isAdmin")
+        }
     }
 }
 

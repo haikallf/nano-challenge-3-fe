@@ -12,11 +12,12 @@ struct ContentView: View {
     @StateObject var notificationService = NotificationService()
     
     let userDefaults = UserDefaults.standard
+    let isAdminKey = "isAdmin"
     
     var body: some View {
         NavigationView {
-            if (userDefaults.object(forKey: "isAdmin") != nil) {
-                if (userDefaults.bool(forKey: "isAdmin") == true) {
+            if (userDefaults.object(forKey: isAdminKey) != nil) {
+                if (userDefaults.bool(forKey: isAdminKey) == true) {
                     AdminHomeView()
                 } else {
                     UserHomeView()
@@ -28,13 +29,9 @@ struct ContentView: View {
                         .fontWeight(.bold)
                     
                     HStack {
-                        NavigationButton("Admin", destination: AdminHomeView(), action: {
-                            userDefaults.set(true, forKey: "isAdmin")
-                        })
+                        NavigationButton("Admin", destination: AdminHomeView(), action: {})
                         
-                        NavigationButton("User", destination: UserHomeView(), action: {
-                            userDefaults.set(false, forKey: "isAdmin")
-                        })
+                        NavigationButton("User", destination: UserHomeView(), action: {})
                     }
                 }
                 .padding()

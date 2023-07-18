@@ -25,18 +25,15 @@ struct NavigationButton<Destination: View>: View {
     }
     
     var body: some View {
-        Button(action: {
-            onTap()
-        }, label: {
-            NavigationLink(destination: destination, label: {
-                Text(text)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(foregroundColor )
-                    .background(backgroundColor)
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
-            })
+
+        NavigationLink(destination: destination, label: {
+            Text(text)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .foregroundColor(foregroundColor )
+                .background(backgroundColor)
+                .foregroundColor(.white)
+                .cornerRadius(12)
         })
     }
 }
