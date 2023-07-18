@@ -107,5 +107,4 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
             return Color.black
         }
     }
-
 }

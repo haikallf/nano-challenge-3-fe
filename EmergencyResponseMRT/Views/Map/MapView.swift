@@ -40,6 +40,7 @@ struct MapView: View {
                     })
                 }
                 .padding(.horizontal, 120)
+                .padding(.bottom, 72)
             }
         }
         .sheet(isPresented: $isSheetShown, content: {

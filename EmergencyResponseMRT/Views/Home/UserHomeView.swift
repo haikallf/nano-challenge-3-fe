@@ -15,7 +15,7 @@ struct UserHomeView: View {
             VStack {
                 VStack(alignment: .leading) {
                     Text("Halo,")
-                    Text("Haikal Lazuardi")
+                    Text(UserDefaults.standard.string(forKey: "email") ?? "NULL")
                         .font(.title2)
                         .fontWeight(.bold)
                 }
@@ -29,6 +29,9 @@ struct UserHomeView: View {
             ReportButton(action: {
                 notificationService.sendNotification(title: "This is title", body: "This is body")
             })
+        }
+        .onAppear {
+            UserDefaults.standard.set(false, forKey: "isAdmin")
         }
         .navigationBarBackButtonHidden()
     }

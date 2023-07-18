@@ -12,35 +12,18 @@ struct ContentView: View {
     @StateObject var notificationService = NotificationService()
     
     let userDefaults = UserDefaults.standard
+    let isAdminKey = "isAdmin"
     
     var body: some View {
         NavigationView {
-            if (userDefaults.object(forKey: "isAdmin") != nil) {
-                if (userDefaults.bool(forKey: "isAdmin") == true) {
-                    AdminHomeView()
-                } else {
-                    UserHomeView()
-                }
+            if (userDefaults.object(forKey: isAdminKey) != nil) {
+                TransitionView()
             } else {
-                VStack {
-                    Text("Welcome to MRT's Emergency Response App")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    
-                    HStack {
-                        NavigationButton("Admin", destination: AdminHomeView(), action: {
-                            userDefaults.set(true, forKey: "isAdmin")
-                        })
-                        
-                        NavigationButton("User", destination: UserHomeView(), action: {
-                            userDefaults.set(false, forKey: "isAdmin")
-                        })
-                    }
-                }
-                .padding()
+                LoginView()
             }
         }
         .onAppear {
+            UserDefaults.resetStandardUserDefaults()
             notificationService.askNotificationPermission()
         }
     }
