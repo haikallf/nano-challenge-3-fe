@@ -31,7 +31,8 @@ struct ListView: View {
                 
                 PassengerCard()
             }
-            .padding()
+            .padding(.bottom, 72)
+            .padding(.horizontal)
         }
     }
 }

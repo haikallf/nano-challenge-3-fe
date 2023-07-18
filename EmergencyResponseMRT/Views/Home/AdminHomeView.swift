@@ -8,23 +8,20 @@
 import SwiftUI
 
 struct AdminHomeView: View {
-    @State var selectedView: Int = 0
+    @State var selectedView: Int = 1
     var body: some View {
-        VStack {
-            TabView(selection: $selectedView) {
+        ZStack {
+            if selectedView == 1 {
                 ListView()
-                    .tabItem{
-                        Label("List",systemImage: "list.bullet")
-                    }
-                    .tag(0)
-                
+            } else if selectedView == 2 {
                 MapView()
-                    .tabItem{
-                        Label("Map",systemImage: "map.fill")
-                    }
-                    .tag(1)
             }
-            .background(.white)
+            
+            VStack {
+                Spacer()
+                
+                BottomNavigationBar(selectedViewIndex: $selectedView)
+            }
         }
         .navigationBarBackButtonHidden()
         .onAppear {
