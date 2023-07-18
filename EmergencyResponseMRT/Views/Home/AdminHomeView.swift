@@ -26,6 +26,7 @@ struct AdminHomeView: View {
             }
             .background(.white)
         }
+        .navigationBarBackButtonHidden()
         .onAppear {
             UserDefaults.standard.set(true, forKey: "isAdmin")
         }

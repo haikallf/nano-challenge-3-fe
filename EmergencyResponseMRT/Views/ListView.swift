@@ -9,7 +9,30 @@ import SwiftUI
 
 struct ListView: View {
     var body: some View {
-        Text("This is ListView")
+        ScrollView {
+            VStack {
+                PassengerCard()
+                
+                PassengerCard()
+                
+                PassengerCard()
+                
+                PassengerCard()
+                
+                PassengerCard()
+                
+                PassengerCard()
+                
+                PassengerCard()
+                
+                PassengerCard()
+                
+                PassengerCard()
+                
+                PassengerCard()
+            }
+            .padding()
+        }
     }
 }
 
