@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
+    @State var shouldNavigate: Bool = false
     
     var body: some View {
         ZStack {
@@ -34,18 +35,34 @@ struct LoginView: View {
                     
                     VStack(spacing: 16) {
                         TextField("exampleemail.com", text: $viewModel.email)
-                        TextField("*******", text: $viewModel.password)
+                            .textInputAutocapitalization(.never)
+                        
+                        SecureField("*******", text: $viewModel.password)
                     }
                 }
                 .padding(.top, 160)
                 
                 // MARK:- Action Button
                 VStack(spacing: 14) {
-                    NavigationButton("Login as User", destination: TransitionView())
+                    CupertinoButton("Login as User", action: {
+                        viewModel.isAdmin = false
+                        viewModel.login()
+                        shouldNavigate = true
+                    })
                     
-                    NavigationButton("Login as Admin", destination: TransitionView(), isBordered: true)
+                    CupertinoButton("Login as Admin", action: {
+                        viewModel.isAdmin = true
+                        viewModel.login()
+                        shouldNavigate = true
+                    }, isBordered: true)
                 }
             }
+            
+            //MARK: Navigate to TransitionView triggered by shouldNavigate
+            NavigationLink(destination: TransitionView(), isActive: $shouldNavigate) {
+                EmptyView()
+            }
+            .opacity(0)
         }
         .padding()
     }

@@ -15,7 +15,7 @@ struct UserHomeView: View {
             VStack {
                 VStack(alignment: .leading) {
                     Text("Halo,")
-                    Text("Haikal Lazuardi")
+                    Text(UserDefaults.standard.string(forKey: "email") ?? "NULL")
                         .font(.title2)
                         .fontWeight(.bold)
                 }

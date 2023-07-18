@@ -11,7 +11,7 @@ class LoginViewModel: ObservableObject {
 
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var isAdmin: String = ""
+    @Published var isAdmin: Bool = false
     
     func login() {
         UserDefaults.standard.set(email, forKey: "email")
