@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct AdminHomeView: View {
+    @State var selectedView: Int = 1
     var body: some View {
-        MapView()
+        ZStack {
+            if selectedView == 1 {
+                ListView()
+            } else if selectedView == 2 {
+                MapView()
+            }
+            
+            VStack {
+                Spacer()
+                
+                BottomNavigationBar(selectedViewIndex: $selectedView)
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .onAppear {
+            UserDefaults.standard.set(true, forKey: "isAdmin")
+        }
     }
 }
 
