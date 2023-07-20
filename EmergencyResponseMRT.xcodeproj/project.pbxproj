@@ -17,6 +17,7 @@
 		C5D1985F2A66FDCE00E1E0F8 /* PassengerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D1985E2A66FDCE00E1E0F8 /* PassengerCard.swift */; };
 		C5D198612A67005100E1E0F8 /* BottomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D198602A67005100E1E0F8 /* BottomNavigationBar.swift */; };
 		DE9FECE52A6156B000BF256A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FECE42A6156B000BF256A /* MapViewModel.swift */; };
+		DEBCF0CA2A6926F000A9385B /* PreLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCF0C92A6926F000A9385B /* PreLoginView.swift */; };
 		DEE253002A6138EA00A54602 /* EmergencyResponseMRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE252FF2A6138EA00A54602 /* EmergencyResponseMRTApp.swift */; };
 		DEE253022A6138EA00A54602 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE253012A6138EA00A54602 /* ContentView.swift */; };
 		DEE253042A6138EB00A54602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE253032A6138EB00A54602 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		DE9FECE12A6155AB00BF256A /* The Breeze.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Breeze.gpx"; sourceTree = "<group>"; };
 		DE9FECE42A6156B000BF256A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		DE9FECE62A615BC100BF256A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DEBCF0C92A6926F000A9385B /* PreLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginView.swift; sourceTree = "<group>"; };
 		DEE252FC2A6138EA00A54602 /* EmergencyResponseMRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmergencyResponseMRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE252FF2A6138EA00A54602 /* EmergencyResponseMRTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyResponseMRTApp.swift; sourceTree = "<group>"; };
 		DEE253012A6138EA00A54602 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				C5D198522A66EEA000E1E0F8 /* ListView.swift */,
 				C5D1985A2A66F58E00E1E0F8 /* TransitionView.swift */,
 				C5D1985C2A66F7AC00E1E0F8 /* LoginView.swift */,
+				DEBCF0C92A6926F000A9385B /* PreLoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				C5D1985F2A66FDCE00E1E0F8 /* PassengerCard.swift in Sources */,
 				DEE2531F2A613BAB00A54602 /* AdminHomeViewModel.swift in Sources */,
 				DEE253232A613EEE00A54602 /* ReportButton.swift in Sources */,
+				DEBCF0CA2A6926F000A9385B /* PreLoginView.swift in Sources */,
 				C5D1985D2A66F7AC00E1E0F8 /* LoginView.swift in Sources */,
 				DEE253142A613AE500A54602 /* AdminHomeView.swift in Sources */,
 				C5D198532A66EEA000E1E0F8 /* ListView.swift in Sources */,
