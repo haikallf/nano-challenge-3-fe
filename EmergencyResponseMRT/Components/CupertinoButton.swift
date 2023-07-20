@@ -15,7 +15,7 @@ struct CupertinoButton: View {
     var foregroundColor: Color
     var backgroundColor: Color
     
-    init(_ text: String, action: @escaping () -> Void, isDisabled: Bool = false, isBordered: Bool = false,foregroundColor: Color = .white, backgroundColor: Color = .blue) {
+    init(_ text: String, action: @escaping () -> Void, isDisabled: Bool = false, isBordered: Bool = false, foregroundColor: Color = .white, backgroundColor: Color = Color("mrtblue")) {
         self.text = text
         self.onTap = action
         self.isDisabled = isDisabled

@@ -19,7 +19,7 @@ struct ContentView: View {
             if (userDefaults.object(forKey: isAdminKey) != nil) {
                 TransitionView()
             } else {
-                LoginView()
+                PreLoginView()
             }
         }
         .onAppear {
