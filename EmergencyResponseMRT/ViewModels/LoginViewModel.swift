@@ -21,13 +21,14 @@ class LoginViewModel: ObservableObject {
             
         let jsonData = try? JSONSerialization.data(withJSONObject: body)
         
-        guard let url = URL(string: "\(baseURL)/auth/user") else { return print("URL not found!") }
+        guard let url = URL(string: "\(baseURL)/auth\(isAdmin ? "/admin" : "/user")") else { return print("URL not found!") }
+        
         var request = URLRequest(url: url)
         
         request.httpMethod = "POST"
-                request.setValue("\(String(describing: jsonData?.count))", forHTTPHeaderField: "Content-Length")
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.httpBody = jsonData
+        request.setValue("\(String(describing: jsonData?.count))", forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             print("-----> data: \(String(describing: data))")
@@ -42,10 +43,12 @@ class LoginViewModel: ObservableObject {
             print("-----1> responseJSON: \(responseJSON)")
             if let responseJSON = responseJSON as? [String: Any] {
                 print("-----2> responseJSON: \(responseJSON)")
+                print(">>> ADMINID: \(responseJSON["adminID"])")
             }
         }
         
         task.resume()
+        
         UserDefaults.standard.set(email, forKey: "email")
         UserDefaults.standard.set(password, forKey: "password")
         UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
