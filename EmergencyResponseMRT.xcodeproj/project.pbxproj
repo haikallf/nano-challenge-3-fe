@@ -25,6 +25,7 @@
 		C5D198612A67005100E1E0F8 /* BottomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D198602A67005100E1E0F8 /* BottomNavigationBar.swift */; };
 		DE9FECE52A6156B000BF256A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FECE42A6156B000BF256A /* MapViewModel.swift */; };
 		DEBCF0CA2A6926F000A9385B /* PreLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCF0C92A6926F000A9385B /* PreLoginView.swift */; };
+		DEBCF0CC2A694A8B00A9385B /* GlobalStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCF0CB2A694A8B00A9385B /* GlobalStates.swift */; };
 		DEE253002A6138EA00A54602 /* EmergencyResponseMRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE252FF2A6138EA00A54602 /* EmergencyResponseMRTApp.swift */; };
 		DEE253022A6138EA00A54602 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE253012A6138EA00A54602 /* ContentView.swift */; };
 		DEE253042A6138EB00A54602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE253032A6138EB00A54602 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		DE9FECE42A6156B000BF256A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		DE9FECE62A615BC100BF256A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DEBCF0C92A6926F000A9385B /* PreLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginView.swift; sourceTree = "<group>"; };
+		DEBCF0CB2A694A8B00A9385B /* GlobalStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStates.swift; sourceTree = "<group>"; };
 		DEE252FC2A6138EA00A54602 /* EmergencyResponseMRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmergencyResponseMRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE252FF2A6138EA00A54602 /* EmergencyResponseMRTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyResponseMRTApp.swift; sourceTree = "<group>"; };
 		DEE253012A6138EA00A54602 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		DEE2531A2A613B2B00A54602 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DEBCF0CB2A694A8B00A9385B /* GlobalStates.swift */,
 				DEE2531D2A613B9A00A54602 /* Home */,
 				DE9FECE42A6156B000BF256A /* MapViewModel.swift */,
 				C5D198582A66F17F00E1E0F8 /* LoginViewModel.swift */,
@@ -291,6 +294,7 @@
 				C5C75ECC2A65BD060055961A /* NotificationService.swift in Sources */,
 				DEE253212A613BB500A54602 /* CupertinoButton.swift in Sources */,
 				DEE253022A6138EA00A54602 /* ContentView.swift in Sources */,
+				DEBCF0CC2A694A8B00A9385B /* GlobalStates.swift in Sources */,
 				C5D1985B2A66F58E00E1E0F8 /* TransitionView.swift in Sources */,
 				DEE253002A6138EA00A54602 /* EmergencyResponseMRTApp.swift in Sources */,
 				3566E0262A67C80F00B32E1F /* UserDetailView.swift in Sources */,
