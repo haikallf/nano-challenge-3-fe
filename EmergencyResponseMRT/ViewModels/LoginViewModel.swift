@@ -13,7 +13,7 @@ class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var isAdmin: Bool = false
     
-    let baseURL = "https://c13f-158-140-189-122.ngrok-free.app"
+    var globalStates = GlobalStates()
     
     func login() {
         
@@ -21,7 +21,7 @@ class LoginViewModel: ObservableObject {
             
         let jsonData = try? JSONSerialization.data(withJSONObject: body)
         
-        guard let url = URL(string: "\(baseURL)/auth\(isAdmin ? "/admin" : "/user")") else { return print("URL not found!") }
+        guard let url = URL(string: "\(globalStates.baseURL)/auth\(isAdmin ? "/admin" : "/user")") else { return print("URL not found!") }
         
         var request = URLRequest(url: url)
         
