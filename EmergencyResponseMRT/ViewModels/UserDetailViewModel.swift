@@ -13,6 +13,8 @@ class UserDetailViewModel : ObservableObject {
     @Published var pinType: String = ""
     @Published var profileImage: String = ""
     
+    
+    
 //    init(otherUsers: [User], name: String, pinType: String, profileImage: String) {
 //        self.otherUsers = otherUsers
 //        self.name = otherUsers[1].name
