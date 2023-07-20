@@ -63,12 +63,11 @@ struct LoginView: View {
                 CupertinoButton("LOGIN", action: {
                     viewModel.isAdmin = isAdmin
                     viewModel.login()
-                    shouldNavigate = true
                 })
             }
             
             //MARK: Navigate to TransitionView triggered by shouldNavigate
-            NavigationLink(destination: TransitionView(), isActive: $shouldNavigate) {
+            NavigationLink(destination: TransitionView(), isActive: $viewModel.shouldNavigate) {
                 EmptyView()
             }
             .opacity(0)

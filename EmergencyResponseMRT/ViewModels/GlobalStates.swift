@@ -8,5 +8,5 @@
 import SwiftUI
 
 class GlobalStates: ObservableObject {
-    @Published var baseURL = "https://c13f-158-140-189-122.ngrok-free.app"
+    @Published var baseURL = "https://goldfish-app-2qxib.ondigitalocean.app"
 }
