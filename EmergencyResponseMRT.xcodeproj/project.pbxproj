@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351F21B12A693578006D7BAE /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 351F21B02A693578006D7BAE /* SocketIO */; };
+		351F21B32A693595006D7BAE /* SocketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F21B22A693595006D7BAE /* SocketParser.swift */; };
+		351F21B52A69368A006D7BAE /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F21B42A69368A006D7BAE /* Delegate.swift */; };
+		351F21B72A69372F006D7BAE /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F21B62A69372F006D7BAE /* SocketManager.swift */; };
+		351F21B92A693A42006D7BAE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F21B82A693A42006D7BAE /* Notification.swift */; };
 		3566E0262A67C80F00B32E1F /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3566E0252A67C80F00B32E1F /* UserDetailView.swift */; };
 		3566E02A2A67D8C200B32E1F /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3566E0292A67D8C200B32E1F /* UserDetailViewModel.swift */; };
 		C5C533EE2A62F436003EE909 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C533ED2A62F436003EE909 /* User.swift */; };
@@ -34,6 +39,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		351F21B22A693595006D7BAE /* SocketParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketParser.swift; sourceTree = "<group>"; };
+		351F21B42A69368A006D7BAE /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
+		351F21B62A69372F006D7BAE /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		351F21B82A693A42006D7BAE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3566E0252A67C80F00B32E1F /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		3566E0292A67D8C200B32E1F /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		C5C533ED2A62F436003EE909 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -68,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351F21B12A693578006D7BAE /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				C5C533ED2A62F436003EE909 /* User.swift */,
+				351F21B82A693A42006D7BAE /* Notification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -86,6 +97,9 @@
 			isa = PBXGroup;
 			children = (
 				C5C75ECB2A65BD060055961A /* NotificationService.swift */,
+				351F21B22A693595006D7BAE /* SocketParser.swift */,
+				351F21B42A69368A006D7BAE /* Delegate.swift */,
+				351F21B62A69372F006D7BAE /* SocketManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -211,6 +225,9 @@
 			dependencies = (
 			);
 			name = EmergencyResponseMRT;
+			packageProductDependencies = (
+				351F21B02A693578006D7BAE /* SocketIO */,
+			);
 			productName = EmergencyResponseMRT;
 			productReference = DEE252FC2A6138EA00A54602 /* EmergencyResponseMRT.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +256,9 @@
 				Base,
 			);
 			mainGroup = DEE252F32A6138EA00A54602;
+			packageReferences = (
+				351F21AF2A693578006D7BAE /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+			);
 			productRefGroup = DEE252FD2A6138EA00A54602 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,11 +297,15 @@
 				C5C75EC82A65B5110055961A /* NavigationButton.swift in Sources */,
 				C5D1985F2A66FDCE00E1E0F8 /* PassengerCard.swift in Sources */,
 				DEE2531F2A613BAB00A54602 /* AdminHomeViewModel.swift in Sources */,
+				351F21B52A69368A006D7BAE /* Delegate.swift in Sources */,
 				DEE253232A613EEE00A54602 /* ReportButton.swift in Sources */,
+				351F21B32A693595006D7BAE /* SocketParser.swift in Sources */,
 				DEBCF0CA2A6926F000A9385B /* PreLoginView.swift in Sources */,
 				3566E02A2A67D8C200B32E1F /* UserDetailViewModel.swift in Sources */,
 				C5D1985D2A66F7AC00E1E0F8 /* LoginView.swift in Sources */,
 				DEE253142A613AE500A54602 /* AdminHomeView.swift in Sources */,
+				351F21B72A69372F006D7BAE /* SocketManager.swift in Sources */,
+				351F21B92A693A42006D7BAE /* Notification.swift in Sources */,
 				C5D198532A66EEA000E1E0F8 /* ListView.swift in Sources */,
 				DEE253262A613F9B00A54602 /* MapView.swift in Sources */,
 				DEE2531C2A613B9200A54602 /* UserHomeViewModel.swift in Sources */,
@@ -495,6 +519,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		351F21AF2A693578006D7BAE /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		351F21B02A693578006D7BAE /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 351F21AF2A693578006D7BAE /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DEE252F42A6138EA00A54602 /* Project object */;
 }

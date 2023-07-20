@@ -12,9 +12,10 @@ struct UserDetailView: View {
     
     @Binding var detents : PresentationDetent
     @Binding var isSheetShown : Bool
-    var fullSheet : PresentationDetent = .fraction(0.75)
+    @State var isDisabled : Bool = true
     
-    @State var halfSheet : PresentationDetent = .fraction(0.35)
+    var fullSheet : PresentationDetent = .fraction(0.75)
+    @State var halfSheet : PresentationDetent = .fraction(0.75)
     @StateObject private var viewModel = UserDetailViewModel()
     
     var body: some View {
@@ -26,17 +27,11 @@ struct UserDetailView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 150, height: 150)
-                            .clipShape(Circle()) // Clip the image into a circle shape
+                            .clipShape(Circle())
                     } placeholder: {
                         ProgressView()
                     }
                     
-                    Image(viewModel.getPinTypeImage())
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 150)
-                        .clipShape(Circle()) // Clip the image into a circle shape
-                        
                 }
                 HStack {
                     Text("Name")
@@ -51,7 +46,9 @@ struct UserDetailView: View {
                 }
                 
                 CupertinoButton("Menuju ke Pengguna") {
+                    halfSheet = .fraction(0.35)
                     detents = halfSheet
+                    isDisabled = false
                 }
 
             } else {
@@ -84,11 +81,12 @@ struct UserDetailView: View {
         }
         .padding(30)
         .presentationDetents([fullSheet, halfSheet], selection: $detents)
+        .interactiveDismissDisabled(isDisabled)
     }
 }
 
-//struct UserDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserDetailView(detents: <#Binding<PresentationDetent?>#>)
-//    }
-//}
+struct UserDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        UserDetailView(detents: .constant(.fraction(0.75)), isSheetShown: .constant(true))
+    }
+}
