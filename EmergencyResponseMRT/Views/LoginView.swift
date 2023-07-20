@@ -32,6 +32,7 @@ struct LoginView: View {
                     
                     TextField("Email", text: $viewModel.email)
                         .font(.headline)
+                        .textInputAutocapitalization(.never)
                 }
                 .padding(.vertical)
                 .padding(.horizontal, 12)
@@ -49,6 +50,7 @@ struct LoginView: View {
                     
                     SecureField("Password", text: $viewModel.password)
                         .font(.headline)
+                        .textInputAutocapitalization(.never)
                 }
                 .padding(.vertical)
                 .padding(.horizontal, 12)
