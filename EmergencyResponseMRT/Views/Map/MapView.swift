@@ -11,6 +11,7 @@ import MapKit
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
     @State private var isSheetShown: Bool = false
+    @State private var detents: PresentationDetent = .fraction(0.75)
     
     var body: some View {
         ZStack {
@@ -32,6 +33,17 @@ struct MapView: View {
                 viewModel.startUpdatingUserLocation()
             }
             
+            VStack{
+                CupertinoButton("Show Sheet") {
+                    isSheetShown.toggle()
+                }
+                .padding(.horizontal, 120)
+                .padding(.bottom, 72)
+                .sheet(isPresented: $isSheetShown) {
+                    UserDetailView(detents: $detents, isSheetShown: $isSheetShown)
+                }
+            }
+            
             if (!viewModel.shouldResetToCenter) {
                 VStack {
                     Spacer()
@@ -43,12 +55,6 @@ struct MapView: View {
                 .padding(.bottom, 72)
             }
         }
-        .sheet(isPresented: $isSheetShown, content: {
-            VStack {
-                Text("This is sheet")
-            }
-            .presentationDetents([.medium])
-        })
     }
 }
 
