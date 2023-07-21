@@ -28,9 +28,21 @@ struct MapView: View {
             .gesture(DragGesture().onChanged { _ in
                 viewModel.shouldResetToCenter = false
             })
+            .overlay(
+                VStack {
+                    Text(viewModel.socketStatus)
+                }
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.black.opacity(0.7))
+                .cornerRadius(10)
+                .padding(),
+                alignment: .top
+            )
             .onAppear {
                 viewModel.checkIfLocationServicesIsEnabled()
                 viewModel.startUpdatingUserLocation()
+                viewModel.connectToSocket()
             }
             
             VStack{

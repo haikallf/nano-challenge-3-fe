@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreLocation
 import MapKit
+import SocketIO
 
 enum MapConstants {
     static let startingLocation = CLLocationCoordinate2D(latitude: -6.298897064753389, longitude: 106.65396658656464)
@@ -21,6 +22,44 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var userLocation: CLLocationCoordinate2D? = nil
     @Published var shouldResetToCenter: Bool = false
     @Published var otherUsers: [User] = User.all
+    
+    @Published private var socket: SocketIOClient?
+    @Published var socketStatus: String = "Not Connected"
+    
+    func connectToSocket() {
+        print(">>>>> connectToSocket()")
+        
+        let manager = SocketManager(socketURL: URL(string: "https://0399-45-64-100-62.ngrok-free.app")!, config: [.log(true), .compress])
+        socket = SocketManager(socketURL: URL(string: "https://goldfish-app-2qxib.ondigitalocean.app")!, config: [.log(true), .compress]).defaultSocket
+
+//        socket?.on(clientEvent: .connect) { data, ack in
+//            print("Socket connected")
+//            self.socketStatus = "Connected"
+//        }
+//
+//        socket?.on(clientEvent: .error) { data, ack in
+//            print("Socket error: \(data)")
+//            self.socketStatus = "Error"
+//        }
+//
+//        socket?.on(clientEvent: .disconnect) { data, ack in
+//            print("Socket disconnected: \(data)")
+//            self.socketStatus = "Disconnected"
+//        }
+//
+//        socket?.on("report-notifications") { data, ack in
+//            // Handle incoming location update from the server
+//            if let locationData = data.first as? [String: Any] {
+//                DispatchQueue.main.async {
+//                    print("LOCATION DATA >>> \(String(describing: data.first))")
+//                }
+//            } else {
+//                print("GAMASUK")
+//            }
+//        }
+        
+        socket?.connect()
+    }
 
     func checkIfLocationServicesIsEnabled() {
         guard CLLocationManager.authorizationStatus() != .denied else {
