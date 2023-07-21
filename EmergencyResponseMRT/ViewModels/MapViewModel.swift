@@ -66,11 +66,16 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     
     func updateAdminLocation(latitude: Double, longitude: Double) {
         socket.on(clientEvent: .connect) { data, ack in
-            let adminData = ["adminID": self.adminId!, "geolocationCoordinates" : ["lattitude": latitude, "longitude": longitude]]
+            let adminData = AdminCoordinateDetail(adminID: Int(self.adminId!)!, geolocationCoordinates: Coordinate(latitude: latitude, longitude: longitude))
             
-            let jsonData = try? JSONSerialization.data(withJSONObject: adminData)
+            let encoder = JSONEncoder()
+            let data = try? encoder.encode(adminData)
+            let stringifiedData = String(data: data!, encoding: String.Encoding.utf8)
             
-            self.socket.emit("admin-coordinates", jsonData!)
+//            let jsonData = try? JSONSerialization.data(withJSONObject: adminData)
+            
+            self.socket.emit("admin-coordinates", stringifiedData!)
+            print("DATAAAA>>>>>>>> \(stringifiedData!)")
             print("Socket connected")
             self.socketStatus = "Connected to adminID: \(self.adminId!)"
         }
