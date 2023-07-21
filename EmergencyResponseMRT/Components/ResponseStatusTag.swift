@@ -12,14 +12,16 @@ struct ResponseStatusTag: View {
     
     func getStatusTag() -> (String, Color) {
         switch responseStatus {
-        case "not_started":
-            return ("Not Started", .red)
-        case "on_progress":
+        case "fine":
+            return ("Not Started", .blue)
+        case "assisted":
             return ("On Progress", .yellow)
+        case "requesting":
+            return ("Requesting", .red)
         case "done":
             return ("Done", .green)
         default:
-            return ("NULL", .black)
+            return ("Not Available", .black)
         }
     }
     
