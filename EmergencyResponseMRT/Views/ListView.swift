@@ -20,8 +20,9 @@ struct ListView: View {
                         Text("Done").tag(2)
                     }
                     .pickerStyle(.segmented)
+                    .padding(.vertical, 14)
                     
-                    WrapLayout {
+                    WrapLayout(horizontalSpacing: 11, verticalSpacing: 14) {
                         PassengerCard()
                         
                         PassengerCard()
@@ -32,7 +33,10 @@ struct ListView: View {
                 .padding(.bottom, 72)
                 .padding(.horizontal)
             }
-            .navigationTitle("Emergency")
+            .navigationTitle("Prioritas")
+            .background(Color("onBackgroundSecondary"))
+            .toolbarBackground(Color("navigationBackground"), for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
         }
     }
 }

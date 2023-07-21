@@ -15,16 +15,16 @@ struct BottomNavigationBar: View {
             Spacer()
             
             VStack(spacing: 7) {
-                Image(systemName: "list.bullet")
+                Image(systemName: "staroflife.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 28)
-                    .foregroundColor(selectedViewIndex == 1 ? .blue : .gray)
+                    .foregroundColor(selectedViewIndex == 1 ? .red : .gray)
                     
                 
-                Text("List")
+                Text("Prioritas")
                     .font(.system(size: 10))
-                    .foregroundColor(selectedViewIndex == 1 ? .blue : .gray)
+                    .foregroundColor(selectedViewIndex == 1 ? .red : .gray)
             }
             .onTapGesture {
                 selectedViewIndex = 1
@@ -34,16 +34,16 @@ struct BottomNavigationBar: View {
             Spacer()
             
             VStack(spacing: 7) {
-                Image(systemName: "map.fill")
+                Image(systemName: "map")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 28)
-                    .foregroundColor(selectedViewIndex == 2 ? .blue : .gray)
+                    .foregroundColor(selectedViewIndex == 2 ? .red : .gray)
                     
                 
-                Text("List")
+                Text("Peta")
                     .font(.system(size: 10))
-                    .foregroundColor(selectedViewIndex == 2 ? .blue : .gray)
+                    .foregroundColor(selectedViewIndex == 2 ? .red : .gray)
             }
             .onTapGesture {
                 selectedViewIndex = 2
@@ -53,7 +53,7 @@ struct BottomNavigationBar: View {
         }
         .padding(.top)
         .padding(.horizontal, 24)
-        .background(.white)
+        .background(Color("onBackground"))
     }
 }
 
