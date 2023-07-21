@@ -10,15 +10,15 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
-    @State private var isSheetShown: Bool = false
-    @State private var detents: PresentationDetent = .fraction(0.75)
+    @State private var isSheetShown: Bool = false // udah gadipake, kalo debug bisa dipake
+    @State private var detents: PresentationDetent = .large
     
     var body: some View {
         ZStack {
             Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.otherUsers) { userLocation in
-                MapAnnotation(coordinate: userLocation.coordinate) {
+                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: userLocation.geolocationCoordinates.latitude, longitude: userLocation.geolocationCoordinates.longitude)) {
                     Image(systemName: "person.fill")
-                        .foregroundColor(viewModel.colorForString(userLocation.pinType))
+                        .foregroundColor(.cyan)
                         .onTapGesture {
                             isSheetShown = true
                         }
@@ -28,9 +28,22 @@ struct MapView: View {
             .gesture(DragGesture().onChanged { _ in
                 viewModel.shouldResetToCenter = false
             })
+            .overlay(
+                VStack {
+                    Text(viewModel.socketStatus)
+                }
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.black.opacity(0.7))
+                .cornerRadius(10)
+                .padding(),
+                alignment: .top
+            )
             .onAppear {
                 viewModel.checkIfLocationServicesIsEnabled()
                 viewModel.startUpdatingUserLocation()
+                viewModel.connectToSocket()
+                viewModel.updateOtherUsersLocation()
             }
             
             VStack{
@@ -39,8 +52,8 @@ struct MapView: View {
                 }
                 .padding(.horizontal, 120)
                 .padding(.bottom, 72)
-                .sheet(isPresented: $isSheetShown) {
-                    UserDetailView(detents: $detents, isSheetShown: $isSheetShown)
+                .sheet(isPresented: $viewModel.showUserDetailsSheet) {
+                    UserDetailView(detents: $detents, isSheetShown: $viewModel.showUserDetailsSheet)
                 }
             }
             

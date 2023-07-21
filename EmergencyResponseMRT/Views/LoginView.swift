@@ -10,56 +10,64 @@ import SwiftUI
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
     @State var shouldNavigate: Bool = false
+    let isAdmin: Bool
     
     var body: some View {
         ZStack {
             VStack {
-                // MARK:- Page Title
-                Text("Welcome to MRT's Emergency Response App")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 52)
+                // MARK:- Page Logo
+               Image("SRS-Logo")
                 
                 Spacer()
             }
+            .padding(.top, 66)
             
-            VStack(spacing: 48) {
-                // MARK:- Login Forms
-                HStack(spacing: 24) {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Email")
-                        Text("Password")
-                    }
+            VStack(spacing: 14) {
+                // MARK:- Email Field
+                HStack(spacing: 14) {
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(.gray)
                     
-                    VStack(spacing: 16) {
-                        TextField("exampleemail.com", text: $viewModel.email)
-                            .textInputAutocapitalization(.never)
-                        
-                        SecureField("*******", text: $viewModel.password)
-                    }
+                    TextField("Email", text: $viewModel.email)
+                        .font(.headline)
+                        .textInputAutocapitalization(.never)
                 }
-                .padding(.top, 160)
+                .padding(.vertical)
+                .padding(.horizontal, 12)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.gray)
+                }
                 
-                // MARK:- Action Button
-                VStack(spacing: 14) {
-                    CupertinoButton("Login as User", action: {
-                        viewModel.isAdmin = false
-                        viewModel.login()
-                        shouldNavigate = true
-                    })
+                // MARK:- Password Field
+                HStack(spacing: 14) {
+                    Image(systemName: "lock.fill")
+                        .resizable()
+                        .frame(width: 17, height: 24)
+                        .foregroundColor(.gray)
                     
-                    CupertinoButton("Login as Admin", action: {
-                        viewModel.isAdmin = true
-                        viewModel.login()
-                        shouldNavigate = true
-                    }, isBordered: true)
+                    SecureField("Password", text: $viewModel.password)
+                        .font(.headline)
+                        .textInputAutocapitalization(.never)
                 }
+                .padding(.vertical)
+                .padding(.horizontal, 12)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.gray)
+                }
+                
+                // MARK:- Login Button
+                CupertinoButton("LOGIN", action: {
+                    viewModel.isAdmin = isAdmin
+                    viewModel.login()
+                })
             }
             
             //MARK: Navigate to TransitionView triggered by shouldNavigate
-            NavigationLink(destination: TransitionView(), isActive: $shouldNavigate) {
+            NavigationLink(destination: TransitionView(), isActive: $viewModel.shouldNavigate) {
                 EmptyView()
             }
             .opacity(0)
@@ -70,6 +78,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(isAdmin: false)
     }
 }

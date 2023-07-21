@@ -12,83 +12,251 @@ struct UserDetailView: View {
     
     @Binding var detents : PresentationDetent
     @Binding var isSheetShown : Bool
-    var fullSheet : PresentationDetent = .fraction(0.75)
+    @State var isDisabled : Bool = true
+    @State var terima : Bool = false
     
-    @State var halfSheet : PresentationDetent = .fraction(0.35)
+    var fullSheet : PresentationDetent = .large
+    @State var halfSheet : PresentationDetent = .large
     @StateObject private var viewModel = UserDetailViewModel()
     
     var body: some View {
-        VStack {
-            if detents == fullSheet {
-                HStack {
-                    AsyncImage(url: URL(string: viewModel.getProfileImage())) { image in
-                        image
+        ZStack {
+            Color("backgroundSheet")
+                .ignoresSafeArea()
+            VStack (spacing: 5){
+                if detents == fullSheet && !terima {
+                    HStack{
+                        Image(viewModel.pinType)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 150, height: 150)
-                            .clipShape(Circle()) // Clip the image into a circle shape
-                    } placeholder: {
-                        ProgressView()
+                            .frame(width: 76, height: 20)
+
+                    }
+                    HStack {
+                        Spacer()
+                        AsyncImage(url: URL(string: viewModel.userImage)) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 150, height: 150)
+                                .clipShape(Circle())
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Text(viewModel.name)
+                            .fontWeight(.semibold)
+                            .font(.title)
+                        Spacer()
+                    }
+                   
+                    
+                    HStack{
+                        Spacer()
+                        Text(viewModel.age)
+                            .fontWeight(.semibold)
+                            .font(.title)
+                        Image(viewModel.gender)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 16, height: 16)
+                        Spacer()
                     }
                     
-                    Image(viewModel.getPinTypeImage())
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 150)
-                        .clipShape(Circle()) // Clip the image into a circle shape
-                        
-                }
-                HStack {
-                    Text("Name")
-                    Spacer()
-                    Text(viewModel.getName())
-                }
-                
-                HStack {
-                    Text("Condition")
-                    Spacer()
-                    Text(viewModel.getCondition())
-                }
-                
-                CupertinoButton("Menuju ke Pengguna") {
-                    detents = halfSheet
-                }
+                    HStack {
+                        Text("Keluhan")
+                            .font(.title2)
+                        Spacer()
+                    }
 
-            } else {
-                AsyncImage(url: URL(string: viewModel.getProfileImage())) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 75, height: 75)
-                        .clipShape(Circle()) // Clip the image into a circle shape
-                } placeholder: {
-                    ProgressView()
+                    HStack() {
+                        Image("Medical")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40, height: 40)
+                        Text("Tidak dapat menaiki kereta dengan benar")
+                            .font(.title3)
+                        Spacer()
+                    }
+                    .padding(10)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("backgroundContainer"))
+                    .cornerRadius(10)
+                    .shadow(radius: 5, x: 5, y : 5)
+                    
+                    HStack {
+                        Text("Kebutuhan")
+                            .font(.title2)
+                        Spacer()
+                    }
+                    
+                    
+                    HStack() {
+                        Text("Membutuhkan bantuan dikarenakan susah untuk berjalan")
+                            .font(.title3)
+                        Spacer()
+                    }
+                    .padding(10)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("backgroundContainer"))
+                    .cornerRadius(10)
+                    .shadow(radius: 5, x: 5, y : 5)
+                    
+                   Spacer()
+                    
+                    CupertinoButton("Terima") {
+                        terima = true
+                        halfSheet = .fraction(0.35)
+                        detents = halfSheet
+                        isDisabled = false
+                    }
+
+                } else if detents == halfSheet && terima {
+                    HStack{
+                        AsyncImage(url: URL(string: viewModel.userImage)) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 150, height: 150)
+                                .clipShape(Circle()) // Clip the image into a circle shape
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        VStack(spacing: 5) {
+                            HStack{
+                                Image(viewModel.pinType)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 76, height: 20)
+                                Spacer()
+
+                            }
+                            HStack {
+                                Text("\(viewModel.name), \(viewModel.age)")
+                                    .fontWeight(.semibold)
+                                    .font(.title2)
+                                Image(viewModel.gender)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 16, height: 16)
+                                Spacer()
+                            }
+                            HStack {
+                                Text(viewModel.location)
+                                    .font(.title3)
+                                Spacer()
+                            }
+                            CupertinoButton("Tunjukkan") {
+                                print("tunjukkan")
+                            }
+                        }
+                    }
+                    
+                } else if detents == fullSheet && terima {
+                    VStack {
+                        HStack {
+                            AsyncImage(url: URL(string: viewModel.userImage)) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 150, height: 150)
+                                    .clipShape(Circle()) // Clip the image into a circle shape
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            VStack(spacing: 5) {
+                                HStack{
+                                    Image(viewModel.pinType)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 76, height: 20)
+                                    Spacer()
+
+                                }
+                                HStack {
+                                    Text("\(viewModel.name), \(viewModel.age)")
+                                        .fontWeight(.semibold)
+                                        .font(.title2)
+                                    Image(viewModel.gender)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 16, height: 16)
+                                    Spacer()
+                                }
+                                HStack {
+                                    Text(viewModel.location)
+                                        .font(.title3)
+                                    Spacer()
+                                }
+                                CupertinoButton("Tunjukkan") {
+                                    print("tunjukkan")
+                                }
+                            }
+                        }
+                        HStack {
+                            Text("Keluhan")
+                                .font(.title2)
+                            Spacer()
+                        }
+
+                        HStack() {
+                            Image("Medical")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40)
+                            Text("Tidak dapat menaiki kereta dengan benar")
+                                .font(.title3)
+                            Spacer()
+                        }
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(Color("backgroundContainer"))
+                        .cornerRadius(10)
+                        .shadow(radius: 5, x: 5, y : 5)
+                        
+                        HStack {
+                            Text("Kebutuhan")
+                                .font(.title2)
+                            Spacer()
+                        }
+                        
+                        
+                        HStack() {
+                            Text("Membutuhkan bantuan dikarenakan susah untuk berjalan")
+                                .font(.title3)
+                            Spacer()
+                        }
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(Color("backgroundContainer"))
+                        .cornerRadius(10)
+                        .shadow(radius: 5, x: 5, y : 5)
+                        
+                       Spacer()
+                        
+                        CupertinoButton("Selesai") {
+                            halfSheet = .large
+                            detents = fullSheet
+                            isDisabled = true
+                            isSheetShown = false
+                        }
+                    }
                 }
-                HStack {
-                    Text("Name")
-                    Spacer()
-                    Text(viewModel.getName())
-                }
-                
-                HStack {
-                    Text("Condition")
-                    Spacer()
-                    Text(viewModel.getCondition())
-                }
-                CupertinoButton("Selesai") {
-                    detents = fullSheet
-                    isSheetShown = false
-                }
+                Spacer()
             }
-            Spacer()
+            .padding(30)
+            .presentationDetents([fullSheet, halfSheet], selection: $detents)
+        .interactiveDismissDisabled()
         }
-        .padding(30)
-        .presentationDetents([fullSheet, halfSheet], selection: $detents)
     }
 }
 
-//struct UserDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserDetailView(detents: <#Binding<PresentationDetent?>#>)
-//    }
-//}
+struct UserDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        UserDetailView(detents: .constant(.large), isSheetShown: .constant(true))
+//            .preferredColorScheme(.dark)
+    }
+}

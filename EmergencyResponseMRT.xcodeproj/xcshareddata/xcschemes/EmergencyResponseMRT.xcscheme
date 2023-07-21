@@ -50,7 +50,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
-         identifier = "../../EmergencyResponseMRT/The Breeze.gpx"
+         identifier = "../../EmergencyResponseMRT/Stasiun Blok M.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>
