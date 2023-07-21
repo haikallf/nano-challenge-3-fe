@@ -16,7 +16,7 @@ struct LoginView: View {
         ZStack {
             VStack {
                 // MARK:- Page Logo
-               Image("MRTJ-Logo")
+               Image("SRS-Logo")
                 
                 Spacer()
             }
