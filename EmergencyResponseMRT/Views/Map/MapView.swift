@@ -10,15 +10,15 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
-    @State private var isSheetShown: Bool = false
+    @State private var isSheetShown: Bool = false // udah gadipake, kalo debug bisa dipake
     @State private var detents: PresentationDetent = .large
     
     var body: some View {
         ZStack {
             Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.otherUsers) { userLocation in
-                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)) {
+                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: userLocation.geolocationCoordinates.latitude, longitude: userLocation.geolocationCoordinates.longitude)) {
                     Image(systemName: "person.fill")
-                        .foregroundColor(viewModel.colorForString(userLocation.pinType))
+                        .foregroundColor(.cyan)
                         .onTapGesture {
                             isSheetShown = true
                         }
@@ -43,6 +43,7 @@ struct MapView: View {
                 viewModel.checkIfLocationServicesIsEnabled()
                 viewModel.startUpdatingUserLocation()
                 viewModel.connectToSocket()
+                viewModel.updateOtherUsersLocation()
             }
             
             VStack{
@@ -51,8 +52,8 @@ struct MapView: View {
                 }
                 .padding(.horizontal, 120)
                 .padding(.bottom, 72)
-                .sheet(isPresented: $isSheetShown) {
-                    UserDetailView(detents: $detents, isSheetShown: $isSheetShown)
+                .sheet(isPresented: $viewModel.showUserDetailsSheet) {
+                    UserDetailView(detents: $detents, isSheetShown: $viewModel.showUserDetailsSheet)
                 }
             }
             

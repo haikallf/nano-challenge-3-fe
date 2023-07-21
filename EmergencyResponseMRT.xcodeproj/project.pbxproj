@@ -14,6 +14,7 @@
 		351F21B92A693A42006D7BAE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F21B82A693A42006D7BAE /* Notification.swift */; };
 		3566E0262A67C80F00B32E1F /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3566E0252A67C80F00B32E1F /* UserDetailView.swift */; };
 		3566E02A2A67D8C200B32E1F /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3566E0292A67D8C200B32E1F /* UserDetailViewModel.swift */; };
+		C5AACB542A6B2C93002F6E89 /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AACB532A6B2C93002F6E89 /* UserAnnotation.swift */; };
 		C5C533EE2A62F436003EE909 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C533ED2A62F436003EE909 /* User.swift */; };
 		C5C75EC82A65B5110055961A /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C75EC72A65B5110055961A /* NavigationButton.swift */; };
 		C5C75ECC2A65BD060055961A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C75ECB2A65BD060055961A /* NotificationService.swift */; };
@@ -55,6 +56,7 @@
 		351F21B82A693A42006D7BAE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3566E0252A67C80F00B32E1F /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		3566E0292A67D8C200B32E1F /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		C5AACB532A6B2C93002F6E89 /* UserAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
 		C5C533ED2A62F436003EE909 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C5C75EC72A65B5110055961A /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		C5C75ECB2A65BD060055961A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -72,7 +74,7 @@
 		C5E1EA832A6AEE0000A23906 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		C5E1EA852A6AF30500A23906 /* UserDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailResponse.swift; sourceTree = "<group>"; };
 		C5E1EA872A6B08DC00A23906 /* AdminCoordinateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCoordinateDetail.swift; sourceTree = "<group>"; };
-		DE9FECE12A6155AB00BF256A /* The Breeze.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Breeze.gpx"; sourceTree = "<group>"; };
+		DE9FECE12A6155AB00BF256A /* Stasiun Blok M.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Stasiun Blok M.gpx"; sourceTree = "<group>"; };
 		DE9FECE42A6156B000BF256A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		DE9FECE62A615BC100BF256A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DEBCF0C92A6926F000A9385B /* PreLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoginView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				C5CD553E2A6985E7006889BC /* UserResponse.swift */,
 				C5E1EA852A6AF30500A23906 /* UserDetailResponse.swift */,
 				C5E1EA872A6B08DC00A23906 /* AdminCoordinateDetail.swift */,
+				C5AACB532A6B2C93002F6E89 /* UserAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,7 +159,7 @@
 				DEE2530F2A613AA100A54602 /* Views */,
 				DEE252FF2A6138EA00A54602 /* EmergencyResponseMRTApp.swift */,
 				DEE253012A6138EA00A54602 /* ContentView.swift */,
-				DE9FECE12A6155AB00BF256A /* The Breeze.gpx */,
+				DE9FECE12A6155AB00BF256A /* Stasiun Blok M.gpx */,
 				DEE253032A6138EB00A54602 /* Assets.xcassets */,
 				DEE253052A6138EB00A54602 /* Preview Content */,
 			);
@@ -337,6 +340,7 @@
 				DEBCF0CA2A6926F000A9385B /* PreLoginView.swift in Sources */,
 				3566E02A2A67D8C200B32E1F /* UserDetailViewModel.swift in Sources */,
 				C5D1985D2A66F7AC00E1E0F8 /* LoginView.swift in Sources */,
+				C5AACB542A6B2C93002F6E89 /* UserAnnotation.swift in Sources */,
 				C5CD553F2A6985E7006889BC /* UserResponse.swift in Sources */,
 				DEE253142A613AE500A54602 /* AdminHomeView.swift in Sources */,
 				351F21B72A69372F006D7BAE /* SocketManager.swift in Sources */,
