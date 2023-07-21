@@ -26,7 +26,7 @@ struct UserDetailView: View {
             VStack (spacing: 5){
                 if detents == fullSheet && !terima {
                     HStack{
-                        Image("Lansia")
+                        Image(viewModel.pinType)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 76, height: 20)
@@ -34,7 +34,7 @@ struct UserDetailView: View {
                     }
                     HStack {
                         Spacer()
-                        AsyncImage(url: URL(string: "https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg")) { image in
+                        AsyncImage(url: URL(string: viewModel.userImage)) { image in
                             image
                                 .resizable()
                                 .scaledToFit()
@@ -47,7 +47,7 @@ struct UserDetailView: View {
                     }
                     HStack {
                         Spacer()
-                        Text("Marcus")
+                        Text(viewModel.name)
                             .fontWeight(.semibold)
                             .font(.title)
                         Spacer()
@@ -56,10 +56,10 @@ struct UserDetailView: View {
                     
                     HStack{
                         Spacer()
-                        Text("66")
+                        Text(viewModel.age)
                             .fontWeight(.semibold)
                             .font(.title)
-                        Image("Male")
+                        Image(viewModel.gender)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 16, height: 16)
@@ -116,7 +116,7 @@ struct UserDetailView: View {
 
                 } else if detents == halfSheet && terima {
                     HStack{
-                        AsyncImage(url: URL(string: "https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg")) { image in
+                        AsyncImage(url: URL(string: viewModel.userImage)) { image in
                             image
                                 .resizable()
                                 .scaledToFit()
@@ -127,7 +127,7 @@ struct UserDetailView: View {
                         }
                         VStack(spacing: 5) {
                             HStack{
-                                Image("Lansia")
+                                Image(viewModel.pinType)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 76, height: 20)
@@ -135,17 +135,17 @@ struct UserDetailView: View {
 
                             }
                             HStack {
-                                Text("Marcus, 66")
+                                Text("\(viewModel.name), \(viewModel.age)")
                                     .fontWeight(.semibold)
                                     .font(.title2)
-                                Image("Male")
+                                Image(viewModel.gender)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 16, height: 16)
                                 Spacer()
                             }
                             HStack {
-                                Text("Blok M, Concourse")
+                                Text(viewModel.location)
                                     .font(.title3)
                                 Spacer()
                             }
@@ -158,7 +158,7 @@ struct UserDetailView: View {
                 } else if detents == fullSheet && terima {
                     VStack {
                         HStack {
-                            AsyncImage(url: URL(string: "https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg")) { image in
+                            AsyncImage(url: URL(string: viewModel.userImage)) { image in
                                 image
                                     .resizable()
                                     .scaledToFit()
@@ -169,7 +169,7 @@ struct UserDetailView: View {
                             }
                             VStack(spacing: 5) {
                                 HStack{
-                                    Image("Lansia")
+                                    Image(viewModel.pinType)
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 76, height: 20)
@@ -177,17 +177,17 @@ struct UserDetailView: View {
 
                                 }
                                 HStack {
-                                    Text("Marcus, 66")
+                                    Text("\(viewModel.name), \(viewModel.age)")
                                         .fontWeight(.semibold)
                                         .font(.title2)
-                                    Image("Male")
+                                    Image(viewModel.gender)
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 16, height: 16)
                                     Spacer()
                                 }
                                 HStack {
-                                    Text("Blok M, Concourse")
+                                    Text(viewModel.location)
                                         .font(.title3)
                                     Spacer()
                                 }
