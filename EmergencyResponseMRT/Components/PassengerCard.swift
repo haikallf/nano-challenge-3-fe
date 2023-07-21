@@ -13,36 +13,41 @@ struct PassengerCard: View {
             // MARK: Profile Picture
             ZStack {
                 Rectangle()
+                    .frame(height: 98)
                 
-                Text("Ibu Hamil")
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 12)
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .background(.purple)
-                    .clipShape(Capsule())
-                   
+                VStack {
+                    Text("Ibu Hamil")
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 12)
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .background(.purple)
+                        .clipShape(Capsule())
+                    
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .offset(x: -4, y: 8)
             }
-            .frame(height: 98)
             
             // MARK: User Details
             VStack {
                 // MARK: User's Biodata
-                HStack {
+                HStack(spacing: 4) {
                     Text("Name")
                         .font(.headline)
                     
                     Text("28")
                         .font(.body)
                     
-                    Text("+")
+                    Image("gender-female")
                     
                     Spacer()
                 }
                 
                 //MARK: User's Location
-                HStack {
+                HStack(spacing: 4) {
                     Image(systemName: "location.fill")
                     
                     Text("Istora Mandiri")
@@ -53,23 +58,15 @@ struct PassengerCard: View {
                 
                 Spacer()
                 
-                Text("Not Started")
-                    .font(.caption2)
-                    .fontWeight(.bold)
-                    .padding(2)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .background(.red)
-                    .clipShape(Capsule())
+                ResponseStatusTag(responseStatus: "not_started")
             }
             .padding(.horizontal, 8)
             .padding(.bottom, 8)
             .padding(.top, 4)
+            .background(Color("cardBackground"))
         }
         .frame(width: 173, height: 200)
-        .background(.gray)
         .cornerRadius(8)
-        
     }
 }
 

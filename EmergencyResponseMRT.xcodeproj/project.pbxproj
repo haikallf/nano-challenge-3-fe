@@ -26,6 +26,8 @@
 		C5D1985F2A66FDCE00E1E0F8 /* PassengerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D1985E2A66FDCE00E1E0F8 /* PassengerCard.swift */; };
 		C5D198612A67005100E1E0F8 /* BottomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D198602A67005100E1E0F8 /* BottomNavigationBar.swift */; };
 		C5D20EF52A69B0EB0060A51E /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D20EF42A69B0EB0060A51E /* SocketHelper.swift */; };
+		C5E1EA7C2A6AB96A00A23906 /* ResponseStatusTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1EA7B2A6AB96A00A23906 /* ResponseStatusTag.swift */; };
+		C5E1EA7E2A6ABBDD00A23906 /* PassengerStatusTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1EA7D2A6ABBDD00A23906 /* PassengerStatusTag.swift */; };
 		DE4431542A6A8F6B0034318D /* WrapLayout in Frameworks */ = {isa = PBXBuildFile; productRef = DE4431532A6A8F6B0034318D /* WrapLayout */; };
 		DE9FECE52A6156B000BF256A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FECE42A6156B000BF256A /* MapViewModel.swift */; };
 		DEBCF0CA2A6926F000A9385B /* PreLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCF0C92A6926F000A9385B /* PreLoginView.swift */; };
@@ -62,6 +64,8 @@
 		C5D1985E2A66FDCE00E1E0F8 /* PassengerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerCard.swift; sourceTree = "<group>"; };
 		C5D198602A67005100E1E0F8 /* BottomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigationBar.swift; sourceTree = "<group>"; };
 		C5D20EF42A69B0EB0060A51E /* SocketHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
+		C5E1EA7B2A6AB96A00A23906 /* ResponseStatusTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseStatusTag.swift; sourceTree = "<group>"; };
+		C5E1EA7D2A6ABBDD00A23906 /* PassengerStatusTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerStatusTag.swift; sourceTree = "<group>"; };
 		DE9FECE12A6155AB00BF256A /* The Breeze.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Breeze.gpx"; sourceTree = "<group>"; };
 		DE9FECE42A6156B000BF256A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		DE9FECE62A615BC100BF256A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 				C5C75EC72A65B5110055961A /* NavigationButton.swift */,
 				C5D1985E2A66FDCE00E1E0F8 /* PassengerCard.swift */,
 				C5D198602A67005100E1E0F8 /* BottomNavigationBar.swift */,
+				C5E1EA7B2A6AB96A00A23906 /* ResponseStatusTag.swift */,
+				C5E1EA7D2A6ABBDD00A23906 /* PassengerStatusTag.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				C5D1985F2A66FDCE00E1E0F8 /* PassengerCard.swift in Sources */,
 				DEE2531F2A613BAB00A54602 /* AdminHomeViewModel.swift in Sources */,
 				351F21B52A69368A006D7BAE /* Delegate.swift in Sources */,
+				C5E1EA7C2A6AB96A00A23906 /* ResponseStatusTag.swift in Sources */,
 				DEE253232A613EEE00A54602 /* ReportButton.swift in Sources */,
 				351F21B32A693595006D7BAE /* SocketParser.swift in Sources */,
 				DEBCF0CA2A6926F000A9385B /* PreLoginView.swift in Sources */,
@@ -327,6 +334,7 @@
 				351F21B92A693A42006D7BAE /* Notification.swift in Sources */,
 				C5D198532A66EEA000E1E0F8 /* ListView.swift in Sources */,
 				DEE253262A613F9B00A54602 /* MapView.swift in Sources */,
+				C5E1EA7E2A6ABBDD00A23906 /* PassengerStatusTag.swift in Sources */,
 				DEE2531C2A613B9200A54602 /* UserHomeViewModel.swift in Sources */,
 				C5C533EE2A62F436003EE909 /* User.swift in Sources */,
 				C5CD553D2A69853A006889BC /* AdminResponse.swift in Sources */,
