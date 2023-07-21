@@ -12,7 +12,7 @@ import SocketIO
 
 
 enum MapConstants {
-    static let startingLocation = CLLocationCoordinate2D(latitude: -6.298897064753389, longitude: 106.65396658656464)
+    static let startingLocation = CLLocationCoordinate2D(latitude: -6.242873624986951, longitude: 106.79801059458454)
     static let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
 }
 
@@ -22,10 +22,11 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var region = MKCoordinateRegion(center: MapConstants.startingLocation, span: MapConstants.defaultSpan)
     @Published var userLocation: CLLocationCoordinate2D? = nil
     @Published var shouldResetToCenter: Bool = false
-    @Published var otherUsers: [User] = User.all
+    @Published var otherUsers: [UserAnnotation] = []
+    @Published var showUserDetailsSheet: Bool = false
     
-    let adminId = UserDefaults.standard.string(forKey: "adminId")
-    let manager = SocketManager(socketURL: URL(string: "https://goldfish-app-2qxib.ondigitalocean.app")!, config: [.log(true)])
+    let adminId = UserDefaults.standard.integer(forKey: "adminId")
+    let manager = SocketManager(socketURL: URL(string: "https://d8d9-45-64-100-53.ngrok-free.app")!, config: [.log(true)])
     
     private var socket: SocketIOClient!
     @Published var socketStatus: String = "Not Connected"
@@ -53,31 +54,36 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
 
         socket.on("report-notifications") { data, ack in
             // Handle incoming location update from the server
-            if let locationData = data.first as? [String: Any] {
-                DispatchQueue.main.async {
-                    print("LOCATION DATA >>> \(String(describing: data.first))")
+            print("RAW DATA -> \(data.first!)")
+            print("ADMIN ID YES -> \(self.adminId)")
+            if let jsonString = data.first as? String,
+               let jsonData = jsonString.data(using: .utf8) {
+                
+                let decoder = JSONDecoder()
+                do {
+                    let decodedData = try decoder.decode([Notification].self, from: jsonData)
+                    print("DECODED DATA -> \(decodedData)")
+                    print("ADMINID -> \(decodedData.first!.adminID)")
+                    print("MASUK SAJA")
+                    if decodedData.first!.adminID == self.adminId {
+                        print("MASUK DAN BENAR")
+                        self.showUserDetailsSheet = true
+                        NotificationService().sendNotification(title: decodedData.first!.title, body: decodedData.first!.description)
+                    }
+                } catch {
+                    print("Error decoding JSON data: \(error)")
                 }
             } else {
-                print("GAMASUK")
+                print("Invalid JSON data")
             }
         }
         socket?.connect()
     }
     
-    func updateAdminLocation(latitude: Double, longitude: Double) {
+    func updateOtherUsersLocation() {
         socket.on(clientEvent: .connect) { data, ack in
-            let adminData = AdminCoordinateDetail(adminID: Int(self.adminId!)!, geolocationCoordinates: Coordinate(latitude: latitude, longitude: longitude))
-            
-            let encoder = JSONEncoder()
-            let data = try? encoder.encode(adminData)
-            let stringifiedData = String(data: data!, encoding: String.Encoding.utf8)
-            
-//            let jsonData = try? JSONSerialization.data(withJSONObject: adminData)
-            
-            self.socket.emit("admin-coordinates", stringifiedData!)
-            print("DATAAAA>>>>>>>> \(stringifiedData!)")
             print("Socket connected")
-            self.socketStatus = "Connected to adminID: \(self.adminId!)"
+            self.socketStatus = "Connected"
         }
 
         socket.on(clientEvent: .error) { data, ack in
@@ -90,15 +96,54 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
             self.socketStatus = "Disconnected"
         }
 
-        socket.on("report-notifications") { data, ack in
+        socket.on("user-coordinates") { data, ack in
             // Handle incoming location update from the server
-            if let locationData = data.first as? [String: Any] {
-                DispatchQueue.main.async {
-                    print("LOCATION DATA >>> \(String(describing: data.first))")
+            print("RAW DATA -> \(data.first!)")
+            if let jsonString = data.first as? String,
+               let jsonData = jsonString.data(using: .utf8) {
+
+                let decoder = JSONDecoder()
+                do {
+                    let decodedData = try decoder.decode([UserAnnotation].self, from: jsonData)
+                    print("DECODED DATA USER -> \(decodedData)")
+                    withAnimation {
+                        self.otherUsers = decodedData
+                    }
+                } catch {
+                    print("Error decoding JSON data: \(error)")
                 }
             } else {
-                print("GAMASUK")
+                print("Invalid JSON data")
             }
+        }
+        
+        socket?.connect()
+    }
+    
+    func updateAdminLocation(latitude: Double, longitude: Double) {
+        socket.on(clientEvent: .connect) { data, ack in
+            let adminData = AdminCoordinateDetail(adminID: self.adminId, geolocationCoordinates: Coordinate(latitude: latitude, longitude: longitude))
+            
+            let encoder = JSONEncoder()
+            let data = try? encoder.encode(adminData)
+            let stringifiedData = String(data: data!, encoding: String.Encoding.utf8)
+            
+//            let jsonData = try? JSONSerialization.data(withJSONObject: adminData)
+            
+            self.socket.emit("admin-coordinates", stringifiedData!)
+            print("DATAAAA>>>>>>>> \(stringifiedData!)")
+            print("Socket connected")
+            self.socketStatus = "Connected to adminID: \(self.adminId)"
+        }
+
+        socket.on(clientEvent: .error) { data, ack in
+            print("Socket error: \(data)")
+            self.socketStatus = "Error"
+        }
+
+        socket.on(clientEvent: .disconnect) { data, ack in
+            print("Socket disconnected: \(data)")
+            self.socketStatus = "Disconnected"
         }
         socket?.connect()
     }
@@ -156,16 +201,14 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     }
 
     private func updateRegion(_ coordinate: CLLocationCoordinate2D) {
-        DispatchQueue.main.async { [weak self] in
-            withAnimation {
-                if self?.shouldResetToCenter == true {
-                    DispatchQueue.main.async {
-                        self?.region = MKCoordinateRegion(center: coordinate, span: MapConstants.defaultSpan)
-                    }
+        if self.shouldResetToCenter == true {
+            DispatchQueue.main.async { [weak self] in
+                withAnimation {
+                    self?.region = MKCoordinateRegion(center: coordinate, span: MapConstants.defaultSpan)
                 }
             }
-            print("COORDINATE (lat, long): (\(coordinate.latitude), \(coordinate.longitude))")
         }
+        print("COORDINATE (lat, long): (\(coordinate.latitude), \(coordinate.longitude))")
     }
     
     func resetMapToCenter() {
