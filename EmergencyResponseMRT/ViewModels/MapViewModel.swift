@@ -25,7 +25,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var otherUsers: [User] = User.all
     
     let adminId = UserDefaults.standard.string(forKey: "adminId")
-    let manager = SocketManager(socketURL: URL(string: "https://goldfish-app-2qxib.ondigitalocean.app")!, config: [.log(true)])
+    let manager = SocketManager(socketURL: URL(string: "https://d8d9-45-64-100-53.ngrok-free.app")!, config: [.log(true)])
     
     private var socket: SocketIOClient!
     @Published var socketStatus: String = "Not Connected"
@@ -53,13 +53,21 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
 
         socket.on("report-notifications") { data, ack in
             // Handle incoming location update from the server
-            if let locationData = data.first as? [String: Any] {
-                DispatchQueue.main.async {
-                    print("LOCATION DATA >>> \(String(describing: data.first))")
+            print("RAW DATA -> \(data.first!)")
+            if let jsonString = data.first as? String,
+                   let jsonData = jsonString.data(using: .utf8) {
+                    
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodedData = try decoder.decode([Notification].self, from: jsonData)
+                        print("DECODED DATA -> \(decodedData)")
+                        print("ADMINID -> \(decodedData.first!.adminID)")
+                    } catch {
+                        print("Error decoding JSON data: \(error)")
+                    }
+                } else {
+                    print("Invalid JSON data")
                 }
-            } else {
-                print("GAMASUK")
-            }
         }
         socket?.connect()
     }
@@ -88,17 +96,6 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         socket.on(clientEvent: .disconnect) { data, ack in
             print("Socket disconnected: \(data)")
             self.socketStatus = "Disconnected"
-        }
-
-        socket.on("report-notifications") { data, ack in
-            // Handle incoming location update from the server
-            if let locationData = data.first as? [String: Any] {
-                DispatchQueue.main.async {
-                    print("LOCATION DATA >>> \(String(describing: data.first))")
-                }
-            } else {
-                print("GAMASUK")
-            }
         }
         socket?.connect()
     }
