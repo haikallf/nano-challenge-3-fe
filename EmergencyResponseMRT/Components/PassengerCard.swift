@@ -10,28 +10,63 @@ import SwiftUI
 struct PassengerCard: View {
     var body: some View {
         VStack {
-            HStack {
+            // MARK: Profile Picture
+            ZStack {
+                Rectangle()
+                
+                Text("Ibu Hamil")
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 12)
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .background(.purple)
+                    .clipShape(Capsule())
+                   
+            }
+            .frame(height: 98)
+            
+            // MARK: User Details
+            VStack {
+                // MARK: User's Biodata
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text("Nama")
-                        Text("Kondisi")
-                        Text("Stasiun")
-                    }
+                    Text("Name")
+                        .font(.headline)
                     
-                    VStack(alignment: .leading) {
-                        Text(": Melinda")
-                        Text(": Ibu Hamil")
-                        Text(": Lebak Bulus")
-                    }
+                    Text("28")
+                        .font(.body)
+                    
+                    Text("+")
+                    
+                    Spacer()
                 }
+                
+                //MARK: User's Location
+                HStack {
+                    Image(systemName: "location.fill")
+                    
+                    Text("Istora Mandiri")
+                    
+                    Spacer()
+                }
+                .font(.caption)
                 
                 Spacer()
                 
-                Text("05.00")
+                Text("Not Started")
+                    .font(.caption2)
+                    .fontWeight(.bold)
+                    .padding(2)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .background(.red)
+                    .clipShape(Capsule())
             }
+            .padding(.horizontal, 8)
+            .padding(.bottom, 8)
+            .padding(.top, 4)
         }
-        .frame(maxWidth: .infinity)
-        .padding()
+        .frame(width: 173, height: 200)
         .background(.gray)
         .cornerRadius(8)
         

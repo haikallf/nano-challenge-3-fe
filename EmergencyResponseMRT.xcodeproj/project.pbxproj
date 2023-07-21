@@ -25,6 +25,8 @@
 		C5D1985D2A66F7AC00E1E0F8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D1985C2A66F7AC00E1E0F8 /* LoginView.swift */; };
 		C5D1985F2A66FDCE00E1E0F8 /* PassengerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D1985E2A66FDCE00E1E0F8 /* PassengerCard.swift */; };
 		C5D198612A67005100E1E0F8 /* BottomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D198602A67005100E1E0F8 /* BottomNavigationBar.swift */; };
+		C5D20EF52A69B0EB0060A51E /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D20EF42A69B0EB0060A51E /* SocketHelper.swift */; };
+		DE4431542A6A8F6B0034318D /* WrapLayout in Frameworks */ = {isa = PBXBuildFile; productRef = DE4431532A6A8F6B0034318D /* WrapLayout */; };
 		DE9FECE52A6156B000BF256A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FECE42A6156B000BF256A /* MapViewModel.swift */; };
 		DEBCF0CA2A6926F000A9385B /* PreLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCF0C92A6926F000A9385B /* PreLoginView.swift */; };
 		DEBCF0CC2A694A8B00A9385B /* GlobalStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCF0CB2A694A8B00A9385B /* GlobalStates.swift */; };
@@ -59,6 +61,7 @@
 		C5D1985C2A66F7AC00E1E0F8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C5D1985E2A66FDCE00E1E0F8 /* PassengerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerCard.swift; sourceTree = "<group>"; };
 		C5D198602A67005100E1E0F8 /* BottomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigationBar.swift; sourceTree = "<group>"; };
+		C5D20EF42A69B0EB0060A51E /* SocketHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		DE9FECE12A6155AB00BF256A /* The Breeze.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Breeze.gpx"; sourceTree = "<group>"; };
 		DE9FECE42A6156B000BF256A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		DE9FECE62A615BC100BF256A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE4431542A6A8F6B0034318D /* WrapLayout in Frameworks */,
 				351F21B12A693578006D7BAE /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +112,7 @@
 				351F21B22A693595006D7BAE /* SocketParser.swift */,
 				351F21B42A69368A006D7BAE /* Delegate.swift */,
 				351F21B62A69372F006D7BAE /* SocketManager.swift */,
+				C5D20EF42A69B0EB0060A51E /* SocketHelper.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 			name = EmergencyResponseMRT;
 			packageProductDependencies = (
 				351F21B02A693578006D7BAE /* SocketIO */,
+				DE4431532A6A8F6B0034318D /* WrapLayout */,
 			);
 			productName = EmergencyResponseMRT;
 			productReference = DEE252FC2A6138EA00A54602 /* EmergencyResponseMRT.app */;
@@ -267,6 +273,7 @@
 			mainGroup = DEE252F32A6138EA00A54602;
 			packageReferences = (
 				351F21AF2A693578006D7BAE /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				DE4431522A6A8F6B0034318D /* XCRemoteSwiftPackageReference "swiftui-WrapLayout" */,
 			);
 			productRefGroup = DEE252FD2A6138EA00A54602 /* Products */;
 			projectDirPath = "";
@@ -300,6 +307,7 @@
 				C5C75ECC2A65BD060055961A /* NotificationService.swift in Sources */,
 				DEE253212A613BB500A54602 /* CupertinoButton.swift in Sources */,
 				DEE253022A6138EA00A54602 /* ContentView.swift in Sources */,
+				C5D20EF52A69B0EB0060A51E /* SocketHelper.swift in Sources */,
 				DEBCF0CC2A694A8B00A9385B /* GlobalStates.swift in Sources */,
 				C5D1985B2A66F58E00E1E0F8 /* TransitionView.swift in Sources */,
 				DEE253002A6138EA00A54602 /* EmergencyResponseMRTApp.swift in Sources */,
@@ -537,8 +545,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 15.2.0;
+			};
+		};
+		DE4431522A6A8F6B0034318D /* XCRemoteSwiftPackageReference "swiftui-WrapLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/FluidGroup/swiftui-WrapLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -548,6 +564,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 351F21AF2A693578006D7BAE /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
 			productName = SocketIO;
+		};
+		DE4431532A6A8F6B0034318D /* WrapLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE4431522A6A8F6B0034318D /* XCRemoteSwiftPackageReference "swiftui-WrapLayout" */;
+			productName = WrapLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
