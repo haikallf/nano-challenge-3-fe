@@ -26,6 +26,7 @@
 		C5D1985F2A66FDCE00E1E0F8 /* PassengerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D1985E2A66FDCE00E1E0F8 /* PassengerCard.swift */; };
 		C5D198612A67005100E1E0F8 /* BottomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D198602A67005100E1E0F8 /* BottomNavigationBar.swift */; };
 		C5D20EF52A69B0EB0060A51E /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D20EF42A69B0EB0060A51E /* SocketHelper.swift */; };
+		DE4431542A6A8F6B0034318D /* WrapLayout in Frameworks */ = {isa = PBXBuildFile; productRef = DE4431532A6A8F6B0034318D /* WrapLayout */; };
 		DE9FECE52A6156B000BF256A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FECE42A6156B000BF256A /* MapViewModel.swift */; };
 		DEBCF0CA2A6926F000A9385B /* PreLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCF0C92A6926F000A9385B /* PreLoginView.swift */; };
 		DEBCF0CC2A694A8B00A9385B /* GlobalStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCF0CB2A694A8B00A9385B /* GlobalStates.swift */; };
@@ -85,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE4431542A6A8F6B0034318D /* WrapLayout in Frameworks */,
 				351F21B12A693578006D7BAE /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +241,7 @@
 			name = EmergencyResponseMRT;
 			packageProductDependencies = (
 				351F21B02A693578006D7BAE /* SocketIO */,
+				DE4431532A6A8F6B0034318D /* WrapLayout */,
 			);
 			productName = EmergencyResponseMRT;
 			productReference = DEE252FC2A6138EA00A54602 /* EmergencyResponseMRT.app */;
@@ -270,6 +273,7 @@
 			mainGroup = DEE252F32A6138EA00A54602;
 			packageReferences = (
 				351F21AF2A693578006D7BAE /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				DE4431522A6A8F6B0034318D /* XCRemoteSwiftPackageReference "swiftui-WrapLayout" */,
 			);
 			productRefGroup = DEE252FD2A6138EA00A54602 /* Products */;
 			projectDirPath = "";
@@ -541,8 +545,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 15.2.0;
+			};
+		};
+		DE4431522A6A8F6B0034318D /* XCRemoteSwiftPackageReference "swiftui-WrapLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/FluidGroup/swiftui-WrapLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -552,6 +564,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 351F21AF2A693578006D7BAE /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
 			productName = SocketIO;
+		};
+		DE4431532A6A8F6B0034318D /* WrapLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE4431522A6A8F6B0034318D /* XCRemoteSwiftPackageReference "swiftui-WrapLayout" */;
+			productName = WrapLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
