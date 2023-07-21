@@ -8,44 +8,52 @@
 import SwiftUI
 
 struct PassengerCard: View {
+    let user: UserDetailResponse
+    
     var body: some View {
         VStack {
             // MARK: Profile Picture
             ZStack {
-                Rectangle()
+                AsyncImage(url: URL(string: user.userImage)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 98)
+                        
+                } placeholder: {
+                    ProgressView()
+                        .frame(height: 98)
+                }
                 
-                Text("Ibu Hamil")
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 12)
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .background(.purple)
-                    .clipShape(Capsule())
-                   
+                VStack {
+                    PassengerStatusTag(isPregnant: user.pinType != "lansia")
+                    
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .offset(x: -4, y: 8)
             }
-            .frame(height: 98)
             
             // MARK: User Details
             VStack {
                 // MARK: User's Biodata
-                HStack {
-                    Text("Name")
+                HStack(spacing: 4) {
+                    Text(user.name)
                         .font(.headline)
                     
-                    Text("28")
+                    Text(user.age)
                         .font(.body)
                     
-                    Text("+")
+                    Image("gender-\(user.gender == "male" ? "male" : "female")")
                     
                     Spacer()
                 }
                 
                 //MARK: User's Location
-                HStack {
+                HStack(spacing: 4) {
                     Image(systemName: "location.fill")
                     
-                    Text("Istora Mandiri")
+                    Text(user.location)
                     
                     Spacer()
                 }
@@ -53,28 +61,20 @@ struct PassengerCard: View {
                 
                 Spacer()
                 
-                Text("Not Started")
-                    .font(.caption2)
-                    .fontWeight(.bold)
-                    .padding(2)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .background(.red)
-                    .clipShape(Capsule())
+                ResponseStatusTag(responseStatus: user.status)
             }
             .padding(.horizontal, 8)
             .padding(.bottom, 8)
             .padding(.top, 4)
+            .background(Color("cardBackground"))
         }
         .frame(width: 173, height: 200)
-        .background(.gray)
         .cornerRadius(8)
-        
     }
 }
 
-struct PassengerCard_Previews: PreviewProvider {
-    static var previews: some View {
-        PassengerCard()
-    }
-}
+//struct PassengerCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PassengerCard()
+//    }
+//}

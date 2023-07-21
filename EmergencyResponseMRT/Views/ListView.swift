@@ -9,30 +9,40 @@ import SwiftUI
 import WrapLayout
 
 struct ListView: View {
-    @State private var selectedItem = 0
+    @StateObject var viewModel = ListViewModel()
+    
     var body: some View {
         VStack {
             ScrollView {
                 VStack {
-                    Picker("", selection: $selectedItem) {
+                    Picker("", selection: $viewModel.selectedItem) {
                         Text("Not Started").tag(0)
                         Text("On Progress").tag(1)
                         Text("Done").tag(2)
                     }
                     .pickerStyle(.segmented)
+                    .padding(.vertical, 14)
                     
-                    WrapLayout {
-                        PassengerCard()
-                        
-                        PassengerCard()
-                        
-                        PassengerCard()
+                    WrapLayout(horizontalSpacing: 11, verticalSpacing: 14) {
+                       
+                        ForEach(viewModel.users, id: \.self) { user in
+                            PassengerCard(user: user)
+                        }
                     }
                 }
                 .padding(.bottom, 72)
                 .padding(.horizontal)
             }
-            .navigationTitle("Emergency")
+            .navigationTitle("Prioritas")
+            .background(Color("onBackgroundSecondary"))
+            .toolbarBackground(Color("navigationBackground"), for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .onAppear {
+                viewModel.getAllUsers()
+            }
+            .onReceive(viewModel.$selectedItem) { _ in
+                viewModel.getAllUsers()
+            }
         }
     }
 }
