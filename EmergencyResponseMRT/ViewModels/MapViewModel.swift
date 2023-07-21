@@ -21,7 +21,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var region = MKCoordinateRegion(center: MapConstants.startingLocation, span: MapConstants.defaultSpan)
     @Published var userLocation: CLLocationCoordinate2D? = nil
     @Published var shouldResetToCenter: Bool = false
-    @Published var otherUsers: [User] = User.all
+//    @Published var otherUsers: [User] = User.all
     
     @Published private var socket: SocketIOClient?
     @Published var socketStatus: String = "Not Connected"

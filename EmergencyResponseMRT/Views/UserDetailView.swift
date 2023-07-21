@@ -22,7 +22,8 @@ struct UserDetailView: View {
         VStack {
             if detents == fullSheet {
                 HStack {
-                    AsyncImage(url: URL(string: viewModel.getProfileImage())) { image in
+                    
+                    AsyncImage(url: URL(string: viewModel.profileImage)) { image in
                         image
                             .resizable()
                             .scaledToFit()
@@ -36,13 +37,13 @@ struct UserDetailView: View {
                 HStack {
                     Text("Name")
                     Spacer()
-                    Text(viewModel.getName())
+                    Text(viewModel.name)
                 }
                 
                 HStack {
                     Text("Condition")
                     Spacer()
-                    Text(viewModel.getCondition())
+                    Text(viewModel.getCondition(pinType: viewModel.pinType))
                 }
                 
                 CupertinoButton("Menuju ke Pengguna") {
@@ -52,7 +53,7 @@ struct UserDetailView: View {
                 }
 
             } else {
-                AsyncImage(url: URL(string: viewModel.getProfileImage())) { image in
+                AsyncImage(url: URL(string: viewModel.profileImage)) { image in
                     image
                         .resizable()
                         .scaledToFit()
@@ -64,13 +65,13 @@ struct UserDetailView: View {
                 HStack {
                     Text("Name")
                     Spacer()
-                    Text(viewModel.getName())
+                    Text(viewModel.name)
                 }
                 
                 HStack {
                     Text("Condition")
                     Spacer()
-                    Text(viewModel.getCondition())
+                    Text(viewModel.getCondition(pinType: viewModel.pinType))
                 }
                 CupertinoButton("Selesai") {
                     detents = fullSheet
