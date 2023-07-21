@@ -8,22 +8,25 @@
 import SwiftUI
 
 struct PassengerCard: View {
+    let user: UserDetailResponse
+    
     var body: some View {
         VStack {
             // MARK: Profile Picture
             ZStack {
-                Rectangle()
-                    .frame(height: 98)
+                AsyncImage(url: URL(string: user.userImage)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 98)
+                        
+                } placeholder: {
+                    ProgressView()
+                        .frame(height: 98)
+                }
                 
                 VStack {
-                    Text("Ibu Hamil")
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 12)
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .background(.purple)
-                        .clipShape(Capsule())
+                    PassengerStatusTag(isPregnant: user.pinType != "lansia")
                     
                     Spacer()
                 }
@@ -35,13 +38,13 @@ struct PassengerCard: View {
             VStack {
                 // MARK: User's Biodata
                 HStack(spacing: 4) {
-                    Text("Name")
+                    Text(user.name)
                         .font(.headline)
                     
-                    Text("28")
+                    Text(user.age)
                         .font(.body)
                     
-                    Image("gender-female")
+                    Image("gender-\(user.gender == "male" ? "male" : "female")")
                     
                     Spacer()
                 }
@@ -50,7 +53,7 @@ struct PassengerCard: View {
                 HStack(spacing: 4) {
                     Image(systemName: "location.fill")
                     
-                    Text("Istora Mandiri")
+                    Text(user.location)
                     
                     Spacer()
                 }
@@ -58,7 +61,7 @@ struct PassengerCard: View {
                 
                 Spacer()
                 
-                ResponseStatusTag(responseStatus: "not_started")
+                ResponseStatusTag(responseStatus: user.status)
             }
             .padding(.horizontal, 8)
             .padding(.bottom, 8)
@@ -70,8 +73,8 @@ struct PassengerCard: View {
     }
 }
 
-struct PassengerCard_Previews: PreviewProvider {
-    static var previews: some View {
-        PassengerCard()
-    }
-}
+//struct PassengerCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PassengerCard()
+//    }
+//}
