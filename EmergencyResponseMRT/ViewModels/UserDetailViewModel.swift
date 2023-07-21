@@ -10,24 +10,26 @@ import SocketIO
 import CoreLocation
 
 class UserDetailViewModel : ObservableObject {
-//    @Published var user: User = User.all[1]
     @Published var name: String = ""
-    @Published var age: Int = 0
+    @Published var age: String = ""
     @Published var gender: String = ""
     @Published var pinType: String = ""
-    @Published var profileImage: String = ""
-    @Published var adminID : Int = 0
+    @Published var userImage: String = ""
+    @Published var userID : Int = 0
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var description : String = ""
+    @Published var location : String = ""
+    @Published var status : String = ""
     
-    var userID : Int = 0
     var title : String = ""
-    var description : String = ""
     var accepted : Bool = false
-    var endPoint = "https://raw.githubusercontent.com/athoya/dummy-json-server/main/"
+    var endPoint = "https://goldfish-app-2qxib.ondigitalocean.app/user-detail/"
     var session = URLSession.shared
     
     
     func getUser() {
-        guard let url = URL(string: "\(endPoint)\(adminID)") else {
+        guard let url = URL(string: "\(endPoint)\(userID)") else {
             print("URL is not valid")
             return
         }
@@ -45,12 +47,17 @@ class UserDetailViewModel : ObservableObject {
             
             do {
                 let decoder = JSONDecoder()
-                let user = try decoder.decode(User.self, from: data)
+                let user = try decoder.decode(UserDetailResponse.self, from: data)
                 self.name = user.name
-                self.age = user.age
+                self.email = user.email
+                self.password = user.password
+                self.pinType = user.pinType
                 self.gender = user.gender
-                self.pinType = self.getCondition(pinType: user.pinType)
-                self.profileImage = user.urlImg
+                self.description = user.description
+                self.age = user.age
+                self.location = user.location
+                self.status = user.status
+                self.userImage = user.userImage
             } catch {
                 print("Decoding error")
             }
@@ -64,11 +71,11 @@ class UserDetailViewModel : ObservableObject {
     func getCondition(pinType: String) -> String {
         switch(pinType) {
         case "blue" :
-            return "Ibu Hamil"
+            return "Hamil"
         case "red" :
             return "Lansia"
         default :
-            return "Ibu Hamil"
+            return "Hamil"
         }
     }
 }
