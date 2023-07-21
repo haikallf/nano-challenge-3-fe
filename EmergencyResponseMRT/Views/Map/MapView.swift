@@ -11,12 +11,12 @@ import MapKit
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
     @State private var isSheetShown: Bool = false
-    @State private var detents: PresentationDetent = .fraction(0.75)
+    @State private var detents: PresentationDetent = .large
     
     var body: some View {
         ZStack {
             Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.otherUsers) { userLocation in
-                MapAnnotation(coordinate: userLocation.coordinate) {
+                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)) {
                     Image(systemName: "person.fill")
                         .foregroundColor(viewModel.colorForString(userLocation.pinType))
                         .onTapGesture {
