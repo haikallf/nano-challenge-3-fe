@@ -257,6 +257,6 @@ struct UserDetailView: View {
 struct UserDetailView_Previews: PreviewProvider {
     static var previews: some View {
         UserDetailView(detents: .constant(.large), isSheetShown: .constant(true))
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
     }
 }
