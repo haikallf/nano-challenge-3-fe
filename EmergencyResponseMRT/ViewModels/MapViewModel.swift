@@ -22,7 +22,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var region = MKCoordinateRegion(center: MapConstants.startingLocation, span: MapConstants.defaultSpan)
     @Published var userLocation: CLLocationCoordinate2D? = nil
     @Published var shouldResetToCenter: Bool = false
-//    @Published var otherUsers: [User] = User.all
+    @Published var otherUsers: [User] = User.all
     
     let manager = SocketManager(socketURL: URL(string: "https://0ba5-158-140-189-122.ngrok-free.app")!, config: [.log(true)])
     
