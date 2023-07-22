@@ -12,6 +12,7 @@
 		351F21B52A69368A006D7BAE /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F21B42A69368A006D7BAE /* Delegate.swift */; };
 		351F21B72A69372F006D7BAE /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F21B62A69372F006D7BAE /* SocketManager.swift */; };
 		351F21B92A693A42006D7BAE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F21B82A693A42006D7BAE /* Notification.swift */; };
+		351F21BD2A6C4AD3006D7BAE /* ResponseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F21BC2A6C4AD3006D7BAE /* ResponseUser.swift */; };
 		3566E0262A67C80F00B32E1F /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3566E0252A67C80F00B32E1F /* UserDetailView.swift */; };
 		3566E02A2A67D8C200B32E1F /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3566E0292A67D8C200B32E1F /* UserDetailViewModel.swift */; };
 		C5AACB542A6B2C93002F6E89 /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AACB532A6B2C93002F6E89 /* UserAnnotation.swift */; };
@@ -54,6 +55,7 @@
 		351F21B42A69368A006D7BAE /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		351F21B62A69372F006D7BAE /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		351F21B82A693A42006D7BAE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		351F21BC2A6C4AD3006D7BAE /* ResponseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUser.swift; sourceTree = "<group>"; };
 		3566E0252A67C80F00B32E1F /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		3566E0292A67D8C200B32E1F /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		C5AACB532A6B2C93002F6E89 /* UserAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				C5E1EA852A6AF30500A23906 /* UserDetailResponse.swift */,
 				C5E1EA872A6B08DC00A23906 /* AdminCoordinateDetail.swift */,
 				C5AACB532A6B2C93002F6E89 /* UserAnnotation.swift */,
+				351F21BC2A6C4AD3006D7BAE /* ResponseUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				3566E02A2A67D8C200B32E1F /* UserDetailViewModel.swift in Sources */,
 				C5D1985D2A66F7AC00E1E0F8 /* LoginView.swift in Sources */,
 				C5AACB542A6B2C93002F6E89 /* UserAnnotation.swift in Sources */,
+				351F21BD2A6C4AD3006D7BAE /* ResponseUser.swift in Sources */,
 				C5CD553F2A6985E7006889BC /* UserResponse.swift in Sources */,
 				DEE253142A613AE500A54602 /* AdminHomeView.swift in Sources */,
 				351F21B72A69372F006D7BAE /* SocketManager.swift in Sources */,
