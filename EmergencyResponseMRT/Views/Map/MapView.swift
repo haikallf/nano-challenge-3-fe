@@ -17,7 +17,7 @@ struct MapView: View {
         ZStack {
             Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.otherUsers) { userLocation in
                 MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: userLocation.geolocationCoordinates.latitude, longitude: userLocation.geolocationCoordinates.longitude)) {
-                    Image(systemName: "person.fill")
+                    Image("pinAnnotation-\(userLocation.pinType == "lansia" ? "lansia" : "bumil")")
                         .foregroundColor(.cyan)
                         .onTapGesture {
                             isSheetShown = true

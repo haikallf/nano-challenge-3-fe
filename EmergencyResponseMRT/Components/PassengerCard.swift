@@ -26,7 +26,8 @@ struct PassengerCard: View {
                 }
                 
                 VStack {
-                    PassengerStatusTag(isPregnant: user.pinType != "lansia")
+//                    PassengerStatusTag(isPregnant: user.pinType != "lansia")
+                    Image("\(user.pinType == "lansia" ? "lansia" : "bumil")")
                     
                     Spacer()
                 }

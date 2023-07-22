@@ -25,9 +25,9 @@ class NotificationService: NSObject, ObservableObject, UNUserNotificationCenterD
     
     func sendNotification(timeInterval: Double = 0.1, title: String, body: String) {
         var trigger: UNNotificationTrigger?
-        
+
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
-        
+
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
