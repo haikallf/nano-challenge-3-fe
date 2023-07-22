@@ -24,9 +24,10 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var shouldResetToCenter: Bool = false
     @Published var otherUsers: [UserAnnotation] = []
     @Published var showUserDetailsSheet: Bool = false
+    @Published var userID: Int = 0
     
     let adminId = UserDefaults.standard.integer(forKey: "adminId")
-    let manager = SocketManager(socketURL: URL(string: "https://d8d9-45-64-100-53.ngrok-free.app")!, config: [.log(true)])
+    let manager = SocketManager(socketURL: URL(string: "https://e703-45-64-100-55.ngrok-free.app")!, config: [.log(true)])
     
     private var socket: SocketIOClient!
     @Published var socketStatus: String = "Not Connected"
@@ -67,6 +68,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
                     print("MASUK SAJA")
                     if decodedData.first!.adminID == self.adminId {
                         print("MASUK DAN BENAR")
+                        self.userID =  decodedData.first?.userID ?? 0
                         self.showUserDetailsSheet = true
                         NotificationService().sendNotification(title: decodedData.first!.title, body: decodedData.first!.description)
                     }
