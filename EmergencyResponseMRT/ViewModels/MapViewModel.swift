@@ -13,7 +13,7 @@ import SocketIO
 
 enum MapConstants {
     static let startingLocation = CLLocationCoordinate2D(latitude: -6.242873624986951, longitude: 106.79801059458454)
-    static let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    static let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
 }
 
 final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -27,7 +27,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var userID: Int = 0
     
     let adminId = UserDefaults.standard.integer(forKey: "adminId")
-    let manager = SocketManager(socketURL: URL(string: "https://e703-45-64-100-55.ngrok-free.app")!, config: [.log(true)])
+    let manager = SocketManager(socketURL: URL(string: GlobalStates().baseURL)!, config: [.log(true)])
     
     private var socket: SocketIOClient!
     @Published var socketStatus: String = "Not Connected"

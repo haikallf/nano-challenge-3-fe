@@ -21,7 +21,7 @@ class UserDetailViewModel : ObservableObject {
     let adminId = UserDefaults.standard.integer(forKey: "adminId")
     
     private var socket: SocketIOClient!
-    let manager = SocketManager(socketURL: URL(string: "https://e703-45-64-100-55.ngrok-free.app")!, config: [.log(true)])
+    let manager = SocketManager(socketURL: URL(string: GlobalStates().baseURL)!, config: [.log(true)])
     @Published var socketStatus: String = "Not Connected"
 
     init(){
