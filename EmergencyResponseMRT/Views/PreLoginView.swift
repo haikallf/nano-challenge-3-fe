@@ -15,7 +15,7 @@ struct PreLoginView: View {
         ZStack {
             // MARK:- MRT Logo
             VStack {
-                Image("MRTJ-Logo")
+                Image("SRS-Logo")
                 
                 Spacer()
             }
@@ -32,7 +32,7 @@ struct PreLoginView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                 }
-                .foregroundColor(Color("mrtblue"))
+                .foregroundColor(Color("systemRed"))
                 .onTapGesture {
                     isAdmin = false
                     shouldNavigate = true
@@ -46,7 +46,7 @@ struct PreLoginView: View {
                         .padding(.horizontal, 36)
                         .overlay {
                             Circle()
-                                .stroke(Color("mrtblue"), lineWidth: 3)
+                                .stroke(Color("systemRed"), lineWidth: 3)
                                 .frame(width: 132, height: 132)
                         }
                     
@@ -54,7 +54,7 @@ struct PreLoginView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                 }
-                .foregroundColor(Color("mrtblue"))
+                .foregroundColor(Color("systemRed"))
                 .onTapGesture {
                     isAdmin = true
                     shouldNavigate = true

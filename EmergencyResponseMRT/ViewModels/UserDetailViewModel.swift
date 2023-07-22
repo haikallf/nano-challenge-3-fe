@@ -10,62 +10,85 @@ import SocketIO
 import CoreLocation
 
 class UserDetailViewModel : ObservableObject {
-    @Published var name: String = ""
-    @Published var age: String = ""
-    @Published var gender: String = ""
-    @Published var pinType: String = ""
-    @Published var userImage: String = ""
-    @Published var userID : Int = 0
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var description : String = ""
-    @Published var location : String = ""
-    @Published var status : String = ""
+    @Published var userID : Int = -1
+    
+    @Published var user : ResponseUser? = nil
     
     var title : String = ""
     var accepted : Bool = false
     var endPoint = "https://goldfish-app-2qxib.ondigitalocean.app/user-detail/"
     var session = URLSession.shared
+    let adminId = UserDefaults.standard.integer(forKey: "adminId")
     
+    private var socket: SocketIOClient!
+    let manager = SocketManager(socketURL: URL(string: GlobalStates().baseURL)!, config: [.log(true)])
+    @Published var socketStatus: String = "Not Connected"
+
+    init(){
+        socket = manager.defaultSocket
+    }
+    
+    func setUserID(userID : Int) {
+        self.userID = userID
+    }
     
     func getUser() {
         guard let url = URL(string: "\(endPoint)\(userID)") else {
             print("URL is not valid")
             return
         }
+        print("INI USER ID \(userID)")
+        print("INI URL NYA \(url)")
         var req = URLRequest(url: url)
         req.httpMethod = "GET"
-        
+
         let task = session.dataTask(with: req) { data, response, error in
             print("-----> data: \(String(describing: data))")
             print("-----> error: \(String(describing: error?.localizedDescription))")
-            
+
             guard let data = data, let response = response as? HTTPURLResponse, error == nil else {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-            
+
             do {
                 let decoder = JSONDecoder()
-                let user = try decoder.decode(UserDetailResponse.self, from: data)
-                self.name = user.name
-                self.email = user.email
-                self.password = user.password
-                self.pinType = user.pinType
-                self.gender = user.gender
-                self.description = user.description
-                self.age = user.age
-                self.location = user.location
-                self.status = user.status
-                self.userImage = user.userImage
+                let user = try decoder.decode(ResponseUser.self, from: data)
+                // Safely unwrap optionals
+                self.user = user
             } catch {
-                print("Decoding error")
+                print("Decoding error: \(error)")
             }
-            
-            
         }
-        
+
         task.resume()
+    }
+
+    
+    func updateUserStatus(accepted : Bool) {
+        socket.on(clientEvent: .connect) { data, ack in
+            let notificationData = Notification(adminID: self.adminId, userID: self.userID, title: "ini apa ya? maaf gw isi ini dulu ya wkwk", description: self.user!.description, accepted: accepted)
+            
+            let encoder = JSONEncoder()
+            let data = try? encoder.encode(notificationData)
+            let stringifiedData = String(data: data!, encoding: String.Encoding.utf8)
+            
+            self.socket.emit("report-notifications", stringifiedData!)
+            print("DATAAAA>>>>>>>> \(stringifiedData!)")
+            print("Socket connected")
+            self.socketStatus = "Connected to adminID: \(self.adminId)"
+        }
+
+        socket.on(clientEvent: .error) { data, ack in
+            print("Socket error: \(data)")
+            self.socketStatus = "Error"
+        }
+
+        socket.on(clientEvent: .disconnect) { data, ack in
+            print("Socket disconnected: \(data)")
+            self.socketStatus = "Disconnected"
+        }
+        socket?.connect()
     }
     
     func getCondition(pinType: String) -> String {

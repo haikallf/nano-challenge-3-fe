@@ -17,7 +17,7 @@ struct MapView: View {
         ZStack {
             Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.otherUsers) { userLocation in
                 MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: userLocation.geolocationCoordinates.latitude, longitude: userLocation.geolocationCoordinates.longitude)) {
-                    Image(systemName: "person.fill")
+                    Image("pinAnnotation-\(userLocation.pinType == "lansia" ? "lansia" : "bumil")")
                         .foregroundColor(.cyan)
                         .onTapGesture {
                             isSheetShown = true
@@ -28,17 +28,21 @@ struct MapView: View {
             .gesture(DragGesture().onChanged { _ in
                 viewModel.shouldResetToCenter = false
             })
-            .overlay(
-                VStack {
-                    Text(viewModel.socketStatus)
-                }
-                .foregroundColor(.white)
-                .padding()
-                .background(Color.black.opacity(0.7))
-                .cornerRadius(10)
-                .padding(),
-                alignment: .top
-            )
+            .sheet(isPresented: $viewModel.showUserDetailsSheet) {
+                UserDetailView(userID: $viewModel.userID, detents: $detents, isSheetShown: $viewModel.showUserDetailsSheet, region: $viewModel.region)
+            }
+            .navigationBarHidden(true)
+//            .overlay(
+//                VStack {
+//                    Text(viewModel.socketStatus)
+//                }
+//                .foregroundColor(.white)
+//                .padding()
+//                .background(Color.black.opacity(0.7))
+//                .cornerRadius(10)
+//                .padding(),
+//                alignment: .top
+//            )
             .onAppear {
                 viewModel.checkIfLocationServicesIsEnabled()
                 viewModel.startUpdatingUserLocation()
@@ -46,16 +50,14 @@ struct MapView: View {
                 viewModel.updateOtherUsersLocation()
             }
             
-            VStack{
-                CupertinoButton("Show Sheet") {
-                    isSheetShown.toggle()
-                }
-                .padding(.horizontal, 120)
-                .padding(.bottom, 72)
-                .sheet(isPresented: $viewModel.showUserDetailsSheet) {
-                    UserDetailView(detents: $detents, isSheetShown: $viewModel.showUserDetailsSheet)
-                }
-            }
+//            VStack{
+//                CupertinoButton("Show Sheet") {
+//                    isSheetShown.toggle()
+//                }
+//                .padding(.horizontal, 120)
+//                .padding(.bottom, 72)
+//                
+//            }
             
             if (!viewModel.shouldResetToCenter) {
                 VStack {
@@ -68,6 +70,9 @@ struct MapView: View {
                 .padding(.bottom, 72)
             }
         }
+//        .sheet(isPresented: $viewModel.showUserDetailsSheet) {
+//            UserDetailView(userID: $viewModel.userID, detents: $detents, isSheetShown: $viewModel.showUserDetailsSheet)
+//        }
     }
 }
 
