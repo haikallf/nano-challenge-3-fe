@@ -15,7 +15,7 @@ class SocketTutorialManager {
 
     // MARK: - Properties
 
-    let manager = SocketManager(socketURL: URL(string: "https://c13f-158-140-189-122.ngrok-free.app/admin-detail")!, config: [.log(false), .compress])
+    let manager = SocketManager(socketURL: URL(string: "https://goldfish-app-2qxib.ondigitalocean.app/")!, config: [.log(false), .compress])
     var socket: SocketIOClient? = nil
 
     // MARK: - Life Cycle

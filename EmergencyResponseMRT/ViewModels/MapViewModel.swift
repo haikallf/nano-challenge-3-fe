@@ -26,7 +26,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var showUserDetailsSheet: Bool = false
     
     let adminId = UserDefaults.standard.integer(forKey: "adminId")
-    let manager = SocketManager(socketURL: URL(string: "https://d8d9-45-64-100-53.ngrok-free.app")!, config: [.log(true)])
+    let manager = SocketManager(socketURL: URL(string: "https://goldfish-app-2qxib.ondigitalocean.app/")!, config: [.log(true)])
     
     private var socket: SocketIOClient!
     @Published var socketStatus: String = "Not Connected"
